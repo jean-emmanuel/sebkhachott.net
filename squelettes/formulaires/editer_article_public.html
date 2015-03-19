@@ -1,0 +1,56 @@
+<BOUCLE_secteur(RUBRIQUES){id_rubrique=#ID_PARENT}>#SET{secteur,#ID_SECTEUR}</BOUCLE_secteur>
+[(#AUTORISER{creerarticledans,rubrique,#ID_PARENT})
+<div class="formulaire_spip formulaire_editer formulaire_editer_article formulaire_editer_article-#ENV{id_article,nouveau}">
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok}|table_valeur{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+
+    
+
+    [(#ENV**{message_ok}|non)
+	<form method='post' action='#ENV{action}'>
+        #ACTION_FORMULAIRE{#ENV{action}}
+        <input type='hidden' name='id_article' value='#ENV{id_article}' />
+        <input type="hidden" id="id_parent" name="id_parent" value="#ENV{id_parent}"/>
+
+        
+        <div class="form-item titre[ (#ENV**{erreurs}|table_valeur{titre}|oui)error]">
+            <input placeholder="<:forum_titre:>" type="text" class="text" name="titre" id="titre" value="#ENV**{titre,''}"/>
+        </div>
+        
+
+        [(#SESSION{statut}|match{0minirezo|1comite}|oui)
+        <div class="form-item descriptif[ (#ENV**{erreurs}|table_valeur{descriptif}|oui)error]">
+            <input placeholder="<:forum_descriptif:>" type="text" class="text" name="descriptif" id="descriptif" value="#ENV**{descriptif}"/>
+        </div>
+        ]
+
+        <div class="form-item text[ (#ENV**{erreurs}|table_valeur{texte}|oui)error]">
+            <textarea placeholder="<:forum_texte:>" type="text" class="text" name="texte" id="texte" rows="1">#ENV**{texte}</textarea>
+        </div>
+        
+	    <div class="form-item info last">
+	            <a  href="#" onclick="$(this).parent().toggleClass('open');return false;"><:forum_typo_titre:></a>
+                <span><:forum_typo:></span>
+        </div>
+            
+        <p class="form-item send">
+            <input type='submit' name="save" class='submit' value='[(#ENV{id_article}|?{<:forum_enregistrer:>,<:forum_proposer:>})]' />
+        </p>
+        
+        
+
+
+	    [<p class="error">(#ENV**{erreurs}|table_valeur{titre})</p>]  
+	    [<p class="error">(#ENV**{erreurs}|table_valeur{descriptif})</p>]  
+	    [<p class="error">(#ENV**{erreurs}|table_valeur{texte})</p>]   
+        
+        </form>
+        
+        
+        
+    ][(#ENV**{message_ok}|oui)
+    <p><a class="button" href="#URL_ARTICLE{#ENV**{message_ok}|table_valeur{id_article}}"><:forum_voir_article:></a></p>
+    ]
+
+</div>
+][(#AUTORISER{creerarticledans,rubrique,#ID_PARENT}|non)<p class="error"><:forum_creer_interdit:></p>]

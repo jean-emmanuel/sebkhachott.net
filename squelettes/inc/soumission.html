@@ -1,0 +1,31 @@
+<BOUCLE_rubriqueContexte(RUBRIQUES){id_rubrique=#ENV{id_rubrique}}>
+<div class="content">
+    #INCLURE{fond=inc/breadcrumbs,env,profondeur,id_rubrique,id_article,id_parent}    
+
+    [(#BLUR|oui)#SET{bg,#LOGO_ARTICLE|image_reduire{400,0}|image_flou{10}|image_recadre{380,140,#BG_POSITION}}]
+    [(#BLUR|non)#SET{bg,#LOGO_ARTICLE|image_reduire{800,0}|image_recadre{0,280,#BG_POSITION}]
+    <div class="header[ (#LOGO_ARTICLE|non) no-image]">
+        [<div class="background" (#LOGO_ARTICLE|oui)data-background="[(#GET{bg}|extraire_attribut{src}|url_absolue)]"></div>]
+        
+        <div class="title">
+            <em>[(#DATE|>{#ENV{date}}|?{#DATE|affdate_heure|textebrut|replace{'h(\[0-9\]+)min','h$1'},#DATE|affdate|textebrut})]</em>
+            <h1>[(#GET{xxxXXx,<:nouvel_article:>}|textebrut|ucfirst|smallcaps)]</h1>
+            [<em class="desc">(#DESCRIPTIF)</em>]
+        </div>
+        <div class="mask"></div>
+        <div class="mask-shadow"></div>
+    </div>
+    
+   
+
+    <div class="container article typo">
+        <div class="wrapper">
+
+            #FORMULAIRE_EDITER_ARTICLE_PUBLIC{new,#ENV{id_rubrique}}
+            
+
+        </div>
+        <div class="mask"></div><div class="mask-shadow"></div>
+    </div>
+</div>
+</BOUCLE_rubriqueContexte>

@@ -1,0 +1,53 @@
+<div class="formulaire_spip formulaire_forum" id="formulaire_forum">
+
+
+
+<form action="#ENV{action}#formulaire_forum" method="post" enctype='multipart/form-data' id="writer"><div>
+[(#ACTION_FORMULAIRE{#ENV{action}}|replace{'<script.*?</script>'})]
+[<input type="hidden" name="id_forum" value="(#ENV*{id_forum})" />]
+<input type="hidden" name="desactiver_previsu" value="oui" />
+ 
+
+
+    [(#SESSION{auth}|non)
+
+			    <div class="form-item user"><input placeholder="<:forum_nom:>" type="text" class="text" name="session_nom" id="session_nom" value="[(#SESSION**{nom}|sinon{#SESSION**{session_nom}}|sinon{''}|entites_html)]" size="40" autocapitalize="off" autocorrect="off" />
+			    </div>[(#CONFIG{accepter_inscriptions}|=={oui}|?{' '})
+			    ]
+
+    ]
+    [(#SESSION{auth}|oui)
+        
+        [<strong>(#SESSION{nom}|typo)</strong> <span class="details"><a href="#URL_LOGOUT" rel="nofollow" title="Se déconnecter"><i class="fa fa-sign-out"></i></a></span>]
+    ]
+
+    [(#CONFIG{forums_titre}|!={non}|non)<input type="hidden" name="titre" id="titre"[ value="(#ENV{titre})"] />]
+	
+	<div class="form-item text[ (#ENV**{erreurs}|table_valeur{texte}|oui)error]">
+	<textarea placeholder="<:forum_message:>" name="texte" id="texte" rows="1" cols="60">[(#ENV{texte})]</textarea>
+</div>
+
+
+
+	[(#REM) Piege a robots spammeurs, dont on change le nom a chaque fois,
+	][<p style="display: none;">
+		<label for="(#ENV{cle_ajouter_document})"><:antispam_champ_vide:></label>
+		<input type="text" class="text" name="#ENV{cle_ajouter_document}" id="#ENV{cle_ajouter_document}" value="#ENV{#ENV{cle_ajouter_document}}" size="10" />
+	</p>]
+	[(#ENV{cle_ajouter_document}|non)
+	<p style="display: none;">
+		<label for="nobot_forum"><:antispam_champ_vide:></label>
+		<input type="text" class="text" name="nobot" id="nobot_forum" value="#ENV{nobot}" size="10" />
+	</p>
+	]
+	<p><input type="submit" class="submit" value="<:forum_confirm:>" name="confirmer_previsu_forum"/></p>
+	
+	<p>[(#ENV**{erreurs}|table_valeur{texte})][(#ENV**{erreurs}|table_valeur{session_nom})]</p>
+
+</div>
+</form>
+
+
+
+
+</div>

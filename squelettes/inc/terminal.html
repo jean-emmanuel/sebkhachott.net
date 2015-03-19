@@ -1,0 +1,134 @@
+<div class="content">
+    #INCLURE{fond=inc/breadcrumbs,env,profondeur,id_rubrique,id_parent}    
+    
+    <div class="header no-image">
+        
+        <div class="title">
+            <h1>3615 Code Yüla</h1>
+            <em class="desc">Terminal Ohrelandais</em>
+        </div>
+        <div class="mask"></div>
+        <div class="mask-shadow"></div>
+    </div>
+
+    <div class="container article terminal typo">
+        <div class="wrapper">
+            	
+		    
+		    [(#ENV{newpass}|oui)
+		    [(#ENV{p}|oui)
+		      #FORMULAIRE_MOT_DE_PASSE
+		      <hr/>
+		    ]
+            ]        
+        
+            [(#SESSION{id_auteur}|=={''}|oui)
+            
+            <h2><:connexion:></h2>
+            #FORMULAIRE_LOGIN_TERMINAL
+    		[(#ENV{newpass}|oui)
+    		[(#ENV{p}|non)
+		      #FORMULAIRE_OUBLI
+		    ]
+		    ]
+            <hr/>
+            <h2><:inscription:></h2>
+            #FORMULAIRE_INSCRIPTION
+            ]
+
+            <BOUCLE_user(AUTEURS){id_auteur=#SESSION{id_auteur}}{tout}>
+            <div class="strike-through align-left"><h2>Profil</h2></div>
+            
+            <table class="fixed">
+            <tr>
+                <td><:forum_login:></td>
+                <td>#LOGIN</td>
+            </tr>
+            <tr>
+                <td><:forum_nom:></td>
+                <td>#NOM</td>
+            </tr>
+            <tr>
+                <td><:forum_date_inscription:></td>
+                <td>[(#DATE_INSCRIPTION|affdate)]</td>
+            </tr>
+            <tr>
+                <td><:forum_sujets_publies:></td>
+                <td><BOUCLE_totala(ARTICLES){id_auteur}> </BOUCLE_totala>#TOTAL_BOUCLE</B_totala>0<//B_totala></td>
+            </tr>
+            <tr>
+                <td><:forum_messages_postes:></td>
+                <td><BOUCLE_totalf(FORUMS){id_auteur}> </BOUCLE_totalf>#TOTAL_BOUCLE</B_totalf>0<//B_totalf></td>
+            
+            </tr>
+            <tr>
+                <td><:forum_modifier_mail:></td>
+                <td>
+                [(#ENV{newmail}|oui)#FORMULAIRE_EDITER_AUTEUR_PUBLIC{#ID_AUTEUR,#SELF}]
+                [(#ENV{newmail}|non)#EMAIL <a title="<:nav_editer:>" href="[(#SELF|parametre_url{newmail,1})]"><i class="fa fa-pencil"><span><:nav_editer:></span></i></a>]
+                </td>
+            </tr>
+            </table>
+            
+
+
+            
+            <div class="strike-through align-left"><h2><:forum_sujets_proposes:></h2></div>
+            
+            <ul class="tight">
+            <BOUCLE_articlesproposes(ARTICLES){!par date}{id_auteur=#ID_AUTEUR}{statut IN publie,prop,prepa,refuse,poubelle}{id_article !IN #ARTICLES_LUS|explode{','}}>
+                <li><a href="#URL_ARTICLE">[(#STATUT|match{prop|prepa}|non)\[[(#STATUT|majuscules)]\] ]#TITRE <em>[(#DATE|affdate_heure|replace{'h(\[0-9\]+)min','h$1'})]</em></a></li>
+            </BOUCLE_articlesproposes>
+            </ul>
+            </B_articlesproposes>
+
+            
+
+            
+            <div class="strike-through align-left"><h2><:forum_sujets_non_lus:></h2></div>
+            
+            
+            <B_articlesnonlus>
+            <ul class="tight">
+            <BOUCLE_articlesnonlus(ARTICLES){!par date}{id_auteur!=#ID_AUTEUR}{id_article !IN #ARTICLES_LUS|explode{','}}{date_modif >= #DATE_INSCRIPTION}>
+                <li><a href="#URL_ARTICLE"><BOUCLE_rub(RUBRIQUES){id_rubrique}>[#TITRE]</BOUCLE_rub> #TITRE <em>[(#DATE|affdate_heure|replace{'h(\[0-9\]+)min','h$1'})]</em></a></li>
+            </BOUCLE_articlesnonlus>
+            </ul>
+            </B_articlesnonlus>
+            <p><em><:forum_aucun_sujet_non_lu:></em></p>
+            <//B_articlesnonlus>
+            
+            
+            <div class="strike-through align-left"><h2><:forum_messages_non_lus:></h2></div>
+            
+            #SET{participe,0}
+            <B_messagesnonlus>
+            <ul class="tight">
+            <BOUCLE_messagesnonlus(ARTICLES){!par date}>
+   
+                #SET{list,#ARRAY}
+                <BOUCLE_forumsnonlus(FORUMS){!par date}{id_article}{date >= #DATE_INSCRIPTION}>
+                #SET{list,#GET{list}|push{#ID_FORUM}}
+                </BOUCLE_forumsnonlus>
+                #SET{n,#GET{list}|array_diff{#FORUMS_LUS|explode{','}}|sizeof}
+                [(#GET{n}|oui)#SET{participe,1}
+                    <li><a href="#URL_ARTICLE#forum">\[#TITRE\] <em>[(#GET{n}) ][(#GET{n}|=={1}|?{<:forum_nouveau_message:>,<:forum_nouveaux_messages:>})]</em></a></li>
+                ]
+                </B_forumsnonlus>
+
+            </BOUCLE_messagesnonlus>
+            </ul>
+            </B_messagesnonlus>
+            
+
+                     
+            [(#GET{participe}|non)<p><em><:forum_aucun_message_non_lu:></em></p>]
+            
+            
+            </BOUCLE_user>
+
+            
+        </div>
+        <div class="mask"></div><div class="mask-shadow"></div>
+    </div>
+</div>

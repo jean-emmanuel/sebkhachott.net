@@ -1,0 +1,32 @@
+<div class="formulaire_spip formulaire_editer formulaire_editer_auteur formulaire_editer_auteur-#ENV{id_auteur,nouveau}">
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
+
+[(#EDITABLE)
+	<form method='post' action='#ENV{action}'><div>
+		[(#REM) declarer les hidden qui declencheront le service du formulaire 
+		parametre : url d'action ]
+		#ACTION_FORMULAIRE{#ENV{action}}
+		<input type='hidden' name='id_auteur' value='#ENV{id_auteur}' />
+		[<input type='hidden' name='redirect' value='(#ENV**{redirect})' />]
+        <input type="hidden" name="nom" id="nom" value="#ENV**{nom}"/>
+        
+        <div class="form-item user[ (#ENV**{erreurs}|table_valeur{email}|oui)error]">
+            <input placeholder="<:forum_mail:>" type="text" class="text" name="email" id="email" value="#ENV**{email}"/>
+        </div>
+        <div class="form-item password[ (#ENV**{erreurs}|table_valeur{new_pass}|oui)error]">
+            <input placeholder="<:forum_nouveau_pass:>" type="password" class="text" name="new_pass" id="new_pass" value="#ENV{new_pass}"/>
+        </div>
+        <div class="form-item password[ (#ENV**{erreurs}|table_valeur{new_pass2}|oui)error]">
+            <input placeholder="<:forum_nouveau_pass2:>" type="password" class="text" name="new_pass2" id="new_pass2" value="#ENV{new_pass2}"/>
+        </div>
+
+	<p class="form-item send align-right"><input type="submit" class="submit full" value="<:forum_enregistrer:>" /></p>
+
+
+    [<p class="error">(#ENV**{erreurs}|table_valeur{email})</p>]
+    [<p class="error">(#ENV**{erreurs}|table_valeur{new_pass})</p>]
+    [<p class="error">(#ENV**{erreurs}|table_valeur{new_pass2})</p>]	
+
+	</div></form>
+]
+</div>

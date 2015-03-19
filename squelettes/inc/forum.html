@@ -1,0 +1,16 @@
+<BOUCLE_art(ARTICLES){id_article?}>
+<div class="comments typo wrapper" id="forum">
+        
+        <BOUCLE_forum(FORUMS){id_article}{par date}>
+        #INCLURE{fond=inc/forum-liste,id_forum}
+        </BOUCLE_forum>
+        
+        [<div class="item new-comment">
+            <p class="info">
+                <span class="border"></span><span class="shadow-fix"></span>
+                <i class="fa fa-comment-o fa-flip-horizontal"></i>
+            </p>
+            (#FORMULAIRE_FORUM)
+        </div>]
+</div>
+</BOUCLE_art>

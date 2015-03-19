@@ -1,0 +1,61 @@
+    <nav>
+        <a href="./" class="logo" data-preload="[(#CHEMIN{assets/logo_big.png}|url_absolue)]"><i><span>#NOM_SITE_SPIP</span></i></a><div class="logo-fix"></div>
+        <a class="button navopen" href="#"><i class="fa fa-navicon"><BOUCLE_rub(RUBRIQUES){id_rubrique=#ID_RUBRIQUE}><span>#TITRE</span></BOUCLE_rub></i></a>
+        <ul class="subnav">
+            <BOUCLE_subNav(RUBRIQUES){profondeur=0}{par num titre}><li><a href="#URL_RUBRIQUE"[ class="(#EXPOSE)"]>[(#TITRE|textebrut)]</a></li>
+            </BOUCLE_subNav>
+        </ul>
+        <ul class="tools">
+            [(#PAGE|=={rubrique}|oui)
+            <li><form id="search" class="typo search[ (#ENV{recherche}|oui)active]" action="#SELF" method="get">
+                <input name="id_rubrique" value="#ID_RUBRIQUE" type="hidden"/>
+                <input name="page" value="#PAGE" type="hidden"/>
+                <input type="text" class="text" name="recherche" placeholder="<:rechercher:>"[ value="(#ENV{recherche})"]/>
+                <input type="submit" class="submit" value="<:nav_rechercher:>"/>
+                <a title="<:nav_rechercher:>" class="[ (#ENV{recherche}|oui)active]" href="#" onclick="$('#search').submit();return false;"><i class="fa fa-fw fa-search"><span><:nav_rechercher:></span></i></a>
+                
+            </form></li>
+
+            <li><a class="rss"  title="<:nav_rss:>" href="[(#URL_PAGE{backend}|parametre_url{id,#ID_RUBRIQUE})]"><i class="fa fa-fw fa-rss"><span><:nav_rss:></span></i></a></li>
+            ]
+            
+            [(#ID_RUBRIQUE|oui)[(#AUTORISER{creerarticledans,rubrique,#ID_RUBRIQUE})
+            <li><a class="new" title="<:nav_ecrire:>" href="[(#URL_PAGE{soumission}|parametre_url{id_rubrique,#ID_RUBRIQUE})]"><i class="fa fa-fw fa-plus"><span><:nav_ecrire:></span></i></a></li>
+            ]]
+            
+            [(#PAGE|=={article}|oui)            
+            [(#ENV{canEdit,1}|oui)<li><a class="edit" href="[(#SELF|parametre_url{edit,1})]" title="<:nav_editer:>"><i class="fa fa-fw fa-pencil"><span><:nav_editer:></span></i></a></li>]
+            [(#FORMULAIRE_FORUM|oui)<li class="forum"><a  href="#forum" title="<:nav_forum:>"><i class="fa fa-fw fa-comments"><span><:nav_forum:></span></i></a></li>]
+            ] 
+            
+            <li><a class="plug"  title="<:nav_terminal:>" href="[(#URL_PAGE{terminal}|parametre_url{return,#SELF})]"><i class="fa fa-fw fa-user"><span><:nav_terminal:></span></i></a></li>
+            
+            [(#SESSION{id_auteur}|!={''}|oui)
+            <li><a href="#URL_LOGOUT"  title="<:nav_deconnexion:>" class="logout"><i class="fa fa-power-off"><span><:nav_deconnexion:></span></i></a></li>
+            ]
+            
+            [(#PAGE|=={terminal}|oui)
+            <li><a class="back"  title="<:nav_retour:>" href="#ENV{return}"><i class="fa fa-fw fa-undo"><span><:nav_retour:></span></i></a></li>
+            ]
+            
+            [(#PAGE|=={soumission}|oui)
+            <li><a class="back" title="<:nav_retour:>" href="#URL_RUBRIQUE{#ID_RUBRIQUE}"><i class="fa fa-fw fa-undo"><span><:nav_retour:></span></i></a></li>
+            ] 
+            
+            
+            [(#PAGE|=={rubrique}|oui)
+            
+            [(#ENV{recherche}|oui)<li><a class="back" title="<:nav_retour:>" href="[(#SELF|parametre_url{recherche,''})]"><i class="fa fa-fw fa-undo"><span><:nav_retour:></span></i></a></li>]
+            [(#ENV{recherche}|non)<li><a class="[(#PROFONDEUR|=={0}|?{close,back})]" title="[(#PROFONDEUR|=={0}|?{<:nav_fermer:>,<:nav_retour:>})]" href="[(#PROFONDEUR|=={0}|?{#URL_PAGE{sommaire},#URL_RUBRIQUE{#ID_PARENT|sinon{#ID_RUBRIQUE}}})]"><i class="fa fa-fw [(#PROFONDEUR|=={0}|?{fa-close,fa-undo})]"><span>[(#PROFONDEUR|=={0}|?{<:nav_fermer:>,<:nav_retour:>})]</span></i></a></li>]
+            
+            ]
+            
+            [(#PAGE|=={article}|oui)
+            [(#ENV{edit}|non)<li><a class="back" title="<:nav_retour:>" href="#URL_RUBRIQUE{#ID_RUBRIQUE}"><i class="fa fa-fw fa-undo"><span><:nav_retour:></span></i></a></li>]            
+            [(#ENV{edit}|oui)<li><a class="back" title="<:nav_retour:>" href="[(#SELF|parametre_url{edit,''})]"><i class="fa fa-fw fa-undo"><span><:nav_retour:></span></i></a></li>]            
+            ]
+        
+        </ul>
+        
+        <div class="shadow"></div>
+    </nav>

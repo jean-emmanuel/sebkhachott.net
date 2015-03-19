@@ -1,0 +1,35 @@
+[(#HTTP_HEADER{Content-type: text/xml[; charset=(#CHARSET)]})]<BOUCLE_rub(RUBRIQUES){id_rubrique=#ID}><?xml version="1.0"[ encoding="(#CHARSET)"]?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+
+
+<channel[ xml:lang="(#LANG)"]>
+    <atom:link href="[(#SELF|url_absolue)]" rel="self" type="application/rss+xml" />
+	<title>[(#TITRE|textebrut) - ] #NOM_SITE_SPIP</title>
+	<link>[(#URL_RUBRIQUE|url_absolue)]/</link>
+	<description>[(#DESCRIPTION|supprimer_tags|texte_backend)]</description>
+	<language>#LANG</language>
+	
+[(#ID_SECTEUR|!={#ID}|oui)#SET{id_rubrique,#ID}]
+<BOUCLE_articles(ARTICLES){id_secteur=#ID_SECTEUR}{id_rubrique?==#GET{id_rubrique}}{!par date}{0,10}>
+	<item[ xml:lang="(#LANG)"]>
+		<title><BOUCLE_rub2(RUBRIQUES){si #ID_SECTEUR|!={#ID}|non}{id_rubrique?}>#TITRE - </BOUCLE_rub2>[(#TITRE|textebrut)]</title>
+		<link>[(#URL_ARTICLE|url_absolue)]</link>
+		<guid isPermaLink="true">[(#URL_ARTICLE|url_absolue)]</guid>
+		<dc:date>[(#DATE|date_iso)]</dc:date>
+		<dc:format>text/html</dc:format>
+		<dc:language>#LANG</dc:language>
+		<description>[(#DESCRIPTIF|sinon{#TEXTE|couper{240,' \[...\]'}}|supprimer_tags|texte_backend)]  </description>
+		<content:encoded>
+		&lt;div class='rss_texte'&gt;
+		[(#DESCRIPTIF|sinon{#TEXTE|couper{240,' \[...\]'}}|supprimer_tags|texte_backend)]  
+		&lt;/div&gt;
+		</content:encoded>
+
+	</item>
+</BOUCLE_articles>
+
+
+</channel>
+
+</rss></BOUCLE_rub>
+

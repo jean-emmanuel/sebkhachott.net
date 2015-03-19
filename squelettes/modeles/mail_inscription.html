@@ -1,0 +1,11 @@
+[(#HTTP_HEADER{Content-type: text/plain[; charset=(#CHARSET)]})]
+[\[(#NOM_SITE_SPIP|concat{'\] : ',<:forum_inscription_mail_sujet:>}|nettoyer_titre_email)]
+
+<:forum_inscription_mail_corps:>
+
+[(#ENV{url_confirm})]
+
+- <:forum_login:>[ : (#ENV{email,email})]
+- <:forum_pass:>[ : (#ENV{pass,pass})]
+
+<:forum_mail_signature:>

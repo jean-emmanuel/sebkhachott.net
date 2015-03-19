@@ -1,0 +1,7 @@
+#HTTP_HEADER{Content-type:text/javascript;}
+{
+    <BOUCLE_table(DATA){source tableau, #ENV{collecte}|gethelloassodata}{","}>
+    [(#CLE|json_encode)]:[(#VALEUR|json_encode)]
+    </BOUCLE_table>
+}
+#CACHE{3600}

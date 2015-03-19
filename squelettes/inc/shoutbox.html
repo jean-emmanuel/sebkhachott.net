@@ -1,0 +1,45 @@
+<BOUCLE_shoutbox(ARTICLES){id_article=41}>
+<div class="shoutbox typo">
+
+
+    <div class="item">
+        <h2>[(#TITRE|textebrut|ucfirst|smallcaps)]</h2>
+        <p class="info">
+            <span class="border"></span>
+            <i class="fa fa-comments"></i>
+        </p>
+        <div class="description">            
+        [(#DESCRIPTIF|textebrut|sinon{#TEXTE|couper{100,' \[...\]'}})]  
+        </div> 
+    </div>
+
+    [(#INCLURE{fond=utils/forum,id_article,return=#SELF}
+        |replace{'name="desactiver_previsu" value=""','name="desactiver_previsu" value="1"'}
+        |replace{'class="submit" value=".*"','class="submit" value=""'}
+    )]
+    <B_forum>
+
+    <div class="messages">
+    <BOUCLE_forum(FORUMS){id_article}{!par date}{0,12}>
+        <div class="message-wrapper">
+            [(#AUTORISER{instituer,forum,#ID_FORUM})
+            <span class="comment-admin">
+                &nbsp;<a class="confirm" title="Marquer comme spam" href="#URL_ACTION_AUTEUR{instituer_forum,#ID_FORUM-spam,#SELF|ancre_url{forum#ID_FORUM}}"><i class="fa fa-minus-circle"></i></a>
+                <a class="confirm" title="Supprimer" href="#URL_ACTION_AUTEUR{instituer_forum,#ID_FORUM-off,#SELF|ancre_url{forum#ID_FORUM}}"><i class="fa fa-trash"></i></a>
+            </span>]
+            <span class="author[ (#ID_AUTEUR|!={0}|?{gang,dude})]">[(#NOM|textebrut|ucfirst|sinon{<:anonyme:>})]</span>
+            <em class="date">
+                ([(#DATE|date_interface|replace{'h(\[0-9\]+)min','h$1'})])
+            </em>
+
+            <div class="message">            
+            [(#TEXTE|textebrut|tinylinks)]  
+            </div>
+        </div>
+    </BOUCLE_forum>
+    </div>
+    </B_forum>
+    
+</div>
+<div class="clear"></div>
+</BOUCLE_shoutbox>

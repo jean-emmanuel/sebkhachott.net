@@ -1,0 +1,35 @@
+$font:'Open Sans';
+$font:'Ubuntu';
+$header-font:League Gothic,ubuntu,sans;
+$mono: mono;
+$size:11pt;
+$text-bottom-margin:1.5em;
+$line-height:1.5em;
+
+$color-link:#B43A3A;
+
+$width:800px;
+
+$bg-color: #2d2d2d;
+$color: #ccc;
+$black:rgba(0,0,0,.8);
+
+
+$bg-color-1: darken($bg-color,0.05);
+$bg-color-2: darken($bg-color,0.1);
+
+$color-1: darken($color,0.1);
+$color-2: darken($color,0.25);
+
+/*
+$bg-color: #eee;
+$color: #333;
+
+
+$bg-color-1: darken($bg-color,0.05);
+$bg-color-2: darken($bg-color,0.1);
+
+$color-1: lighten($color,0.1);
+$color-2: lighten($color,0.25);
+
+*/

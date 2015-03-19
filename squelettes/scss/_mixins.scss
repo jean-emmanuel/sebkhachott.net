@@ -1,0 +1,103 @@
+@mixin vendor-property($property, $value) { 
+    @each $vendor in ('-moz-', '-webkit-', '-o-', '-ms-', '') {
+        #{$vendor}#{$property}: #{$value};
+    }
+}
+
+@mixin vendor-value($property, $value) { 
+    @each $vendor in ('-moz-', '-webkit-', '-o-', '-ms-', '') {
+        #{$property}: #{$vendor}#{$value};
+    }
+}
+
+@mixin vendor-keyframes($name) {
+	@-moz-keyframes #{$name} { @content; }
+	@-webkit-keyframes #{$name} { @content; }
+	@-o-keyframes #{$name} { @content; }
+	@-ms-keyframes #{$name} { @content; }
+	@keyframes #{$name} { @content; }
+}
+
+@mixin icon($content: false,$after:false) {
+	text-decoration: none;
+    
+    @if $after {
+	    &:after {
+		    @if $content {
+			    content: $content;
+		    }
+		    -moz-osx-font-smoothing: grayscale;
+		    -webkit-font-smoothing: antialiased;
+		    font-family: FontAwesome;
+		    font-style: normal;
+		    font-weight: normal;
+		    text-transform: none !important;
+	    }
+    }
+    @if !$after {
+	    &:before {
+		    @if $content {
+			    content: $content;
+		    }
+		    -moz-osx-font-smoothing: grayscale;
+		    -webkit-font-smoothing: antialiased;
+		    font-family: FontAwesome;
+		    font-style: normal;
+		    font-weight: normal;
+		    text-transform: none !important;
+	    }
+	}
+	
+}
+
+//Flat shadow
+//==========
+
+@mixin long-shadow($type, $color, $length, $fadeout: false, $skew: false, $direction: right){
+  $shadow: '';
+  @if $skew == false or $type == text{
+    @if $direction == right {
+      @for $i from 0 to $length - 1 {
+        $shadow: $shadow + $i*1.4  + 'px ' + $i + 'px 0 ' + $color + ','+ $i*1.02  + 'px ' + $i + 'px 0 ' + $color + ',';
+      }
+    }
+    @if $direction == left {
+      @for $i from 0 to $length - 1 {
+         $shadow: $shadow + $i * -1.1  + 'px ' + $i + 'px 0 ' + $color + ',';
+       }
+      }
+     }
+        
+   @if $fadeout == true{
+    @for $i from 1 to $length - 1 {
+      @if $type == text or $skew == false{
+        @if $direction == right{
+          $shadow: $shadow + $i + 'px ' + $i + 'px 0 ' +       rgba($color, 1 - $i / $length) + ',';
+        }
+        @if $direction == left{
+          $shadow: $shadow + $i * -1 + 'px ' + $i + 'px 0 ' +       rgba($color, 1 - $i / $length) + ',';
+        }
+      }
+      @if ($type == box) and $skew == true{
+        @if $direction == right {
+          $shadow: $shadow + $i + 'px ' + $i + 'px 0 ' + $i * .2 + 'px ' + rgba($color, 1 - $i / $length) + ',';
+        }
+        @if $direction == left {
+          $shadow: $shadow + $i * -1 + 'px ' + $i + 'px 0 ' + $i * .2 + 'px ' + rgba($color, 1 - $i / $length) + ',';
+        }
+      }
+  }
+  $shadow: $shadow + $length + 'px ' + $length + 'px 0 ' + rgba($color, 0);
+ }
+ @if $fadeout == false{
+   @if $skew == true and ( $type == box ){
+     @for $i from 0 to $length - 1 {
+            $shadow: $shadow + $i + 'px ' + $i + 'px 0 ' + $i * .1 + 'px ' + $color + ',';
+      }
+   }
+    $shadow: $shadow + $length + 'px ' + $length + 'px 0 ' + rgba(0,0,0,0);
+ }
+ $shadow: unquote($shadow);
+  @if $type == 'box' {box-shadow: $shadow;}
+  @if $type == 'text' {text-shadow: $shadow;}
+}

@@ -1,0 +1,71 @@
+<div class="comment-form" id="forum#ID_FORUM">
+
+    <form action="#ENV{action}#forum#ID_FORUM" method="post" enctype='multipart/form-data'><div>
+    [(#ACTION_FORMULAIRE{#ENV{action}}|replace{'<script.*?</script>'})]
+    [<input type="hidden" name="id_forum" value="(#ENV*{id_forum})" />]
+     <input type="hidden" name="desactiver_previsu" value="" />
+    <input type="hidden" name="titre" id="titre"[ value="(#ENV{titre})"] />
+
+    <div class="form-item user">
+    [(#SESSION{auth}|non)
+        <input placeholder="<:forum_nom:>" type="text" class="text" name="session_nom" id="session_nom" value="[(#SESSION**{nom}|sinon{#SESSION**{session_nom}}|sinon{''}|entites_html)]"/>
+    ]
+    [(#SESSION{auth}|oui)
+        <strong>[(#SESSION{nom}|typo)]</strong>
+    ]
+    </div>
+	
+	<div class="form-item text last[ (#ENV**{erreurs}|table_valeur{texte}|oui)error]">
+	    <textarea placeholder="<:forum_message:>" name="texte" id="texte" rows="1" cols="60">[(#ENV{texte})]</textarea>
+    </div>
+
+	[(#REM) Piege a robots spammeurs, dont on change le nom a chaque fois,
+	][<p style="display: none;">
+		<label for="(#ENV{cle_ajouter_document})"><:antispam_champ_vide:></label>
+		<input type="text" class="text" name="#ENV{cle_ajouter_document}" id="#ENV{cle_ajouter_document}" value="#ENV{#ENV{cle_ajouter_document}}" size="10" />
+	</p>]
+	[(#ENV{cle_ajouter_document}|non)
+	<p style="display: none;">
+		<label for="nobot_forum"><:antispam_champ_vide:></label>
+		<input type="text" class="text" name="nobot" id="nobot_forum" value="#ENV{nobot}" size="10" />
+	</p>
+	]
+	
+
+
+	
+	<p class="form-item send"><input type="submit" class="submit" value="<:forum_previsu:>" /></p>
+	
+	[<p class="error">(#ENV**{erreurs}|table_valeur{texte})][(#ENV**{erreurs}|table_valeur{session_nom})</p>]
+
+</div>
+</form>
+
+
+
+[(#ENV*{erreurs}|table_valeur{previsu}|oui)
+
+[<span>(#ENV*{erreurs}|table_valeur{previsu}|match{'<span>.*</span>'})</span> <em>([(#ENV{date}|date_interface)])</em>]           
+
+[<div class="message">
+    (#ENV*{erreurs}|table_valeur{previsu}|match{"<div style='word-wrap:break-word;'>.*</div>"}|safehtml)
+</div>]
+
+
+
+<form action="#ENV{action}" method="post" class="noajax" id="preview">
+	<div>
+	[(#ACTION_FORMULAIRE{#ENV{action}}|replace{'<script.*\n*.*\n*?script>'})]
+	<input type='hidden' name='titre' value="#ENV{titre}" />
+	<input type='hidden' name='texte' value="#ENV{texte}" />
+	<input type='hidden' name='url_site' value="#ENV{url_site}" />
+	<input type='hidden' name='nom_site' value="#ENV{nom_site}" />
+	[<input type="hidden" name="id_forum" value="(#ENV*{id_forum})" />]
+
+    [(#ENV*{erreurs}|table_valeur{previsu}|match{'<input.*value="'})]<:forum_confirm:>"[(#ENV*{erreurs}|table_valeur{previsu}|match{'<input.*/>'}|replace{'<input.*value=".*"',''})]
+	</div>
+</form>
+
+]
+
+</div>

@@ -1,0 +1,28 @@
+<div class="formulaire_spip formulaire_inscription ajax" id="formulaire_inscription">
+[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+
+<form method="post" action="#ENV{action}">
+	#ACTION_FORMULAIRE{#ENV{action}}
+
+    <div class="form-item user[ (#ENV**{erreurs}|table_valeur{nom_inscription}|oui)error]">
+        <input placeholder="<:forum_nom:>" type="text" class="text" name="nom_inscription" id="nom_inscription" value="#ENV{nom_inscription}"/>
+    </div>
+    <div class="form-item text mail last[ (#ENV**{erreurs}|table_valeur{mail_inscription}|oui)error]">
+        <input placeholder="<:forum_mail:>" type="text" class="text" name="mail_inscription" id="mail_inscription" value="#ENV{mail_inscription}"/>
+    </div>
+
+	[(#REM) Piege a robots spammeurs ]
+	<p style="display: none;">
+		<label for="nobot"><:antispam_champ_vide:></label>
+		<input type="text" class="text" name="nobot" id="nobot" value="#ENV{nobot}" size="10" />
+	</p>
+
+	<p class="form-item send"><input type="submit" class="submit" value="<:forum_inscription:>" /></p>
+
+    
+	[<span class="error">(#ENV**{erreurs}|table_valeur{nom_inscription})</span>]
+	[<p class="error">(#ENV**{erreurs}|table_valeur{mail_inscription})</p>]
+ </form>
+
+</div>

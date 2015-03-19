@@ -1,0 +1,10 @@
+A
+[(#FORMULAIRE_INSCRIPTION)]
+
+
+[(#REM)
+
+[(#INCLURE{fond=utils/helloasso,collecte=saelig-oya-chaos-chaos}|json_decode|table_valeur{montant})]
+/
+[(#INCLURE{fond=utils/helloasso,collecte=saelig-oya-chaos-chaos}|json_decode|table_valeur{objectif})]
+]

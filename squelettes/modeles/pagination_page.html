@@ -1,0 +1,15 @@
+#ENV*{bloc_ancre}
+#SET{bornes,#ENV{page_courante}|bornes_pagination{#ENV{nombre_pages},10}}
+#SET{premiere, #GET{bornes}|reset}
+#SET{derniere, #GET{bornes}|end}
+#SET{pages,#GET{premiere}|range{#GET{derniere}}}
+
+<B_pages>
+<div class="pagination">
+    <BOUCLE_pages(POUR){tableau #GET{pages}}{0,#ENV{max_items,999999}}>
+    [(#SET{item, #VALEUR|moins{1}|mult{#ENV{pas}} })][(#SET{pagin,#ENV{url}|parametre_url{#ENV{debut},#GET{item}|?{#GET{item}}}|ancre_url{#ENV{nom_ancre}}})
+    ][(#ENV{page_courante}|=={#VALEUR}|oui)<span class="on">#VALEUR</span>
+    ][(#ENV{page_courante}|=={#VALEUR}|non)<a href="#GET{pagin}" class="">#VALEUR</a>]
+    </BOUCLE_pages>
+</div>
+</B_pages>

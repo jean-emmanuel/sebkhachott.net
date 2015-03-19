@@ -1,0 +1,78 @@
+#SET{statlist,#ARRAY{0,'publie'}}#SET{canEdit,0}#SET{safeSource,0}
+<BOUCLE_auteur_art(ARTICLES){id_article=#ID_ARTICLE}{statut IN prop,prepa,publie,refuse,poubelle}>
+    <BOUCLE_auteur(AUTEURS){id_article}>
+        [(#ID_AUTEUR|=={#SESSION{id_auteur}}|oui)
+            #SET{statlist,#ARRAY{0,'prop',1,'prepa',2,'publie',3,'refuse',4,'poubelle'}}
+            #SET{canEdit,1}
+        ][(#SESSION{statut}|match{0minirezo|1comite}|oui)#SET{canEdit,1}#SET{statlist,#ARRAY{0,'prop',1,'prepa',2,'publie',3,'refuse',4,'poubelle'}}]
+        [(#STATUT|match{0minirezo|1comite}|oui)#SET{safeSource,1}]
+    </BOUCLE_auteur>
+</BOUCLE_auteur_art>
+
+<BOUCLE_articleContexte(ARTICLES){id_article=#ID_ARTICLE}{statut IN #GET{statlist}}><BOUCLE_rubriqueContexte(RUBRIQUES){id_rubrique=#ID_RUBRIQUE}><BOUCLE_article(ARTICLES){id_article?}{statut IN #GET{statlist}}>
+<div class="content">
+    #INCLURE{fond=inc/breadcrumbs,env,profondeur,id_rubrique,id_article,id_parent,canEdit=#GET{canEdit},id_secteur=#_rubriqueContexte:ID_SECTEUR}    
+
+    [(#BLUR|oui)#SET{bg,#LOGO_ARTICLE|image_reduire{400,0}|image_flou{10}|image_recadre{380,140,#BG_POSITION}}]
+    [(#BLUR|non)#SET{bg,#LOGO_ARTICLE|image_reduire{800,0}|image_recadre{0,280,#BG_POSITION}]
+    <div class="header[ (#LOGO_ARTICLE|non) no-image]">
+        [<div class="background" (#LOGO_ARTICLE|oui)data-background="[(#GET{bg}|extraire_attribut{src}|url_absolue)]"></div>]
+        
+        <div class="title">
+            <em>[(#DATE|>{#ENV{date}}|?{#DATE|affdate_heure|textebrut|replace{'h(\[0-9\]+)min','h$1'},#DATE|affdate|textebrut})]</em>
+            <h1>[(#TITRE|textebrut|ucfirst|smallcaps)]</h1>
+            <em class="desc">
+           <B_auteurdesc><:forum_par:>
+            <BOUCLE_auteurdesc(AUTEURS){si #DESCRIPTIF|non}{id_article}{', '}>#SET{author,#NOM}
+                 [(#GET{author,???})]
+            </BOUCLE_auteurdesc>         
+                [(#DESCRIPTIF|textebrut)]
+            <//B_auteurdesc>  
+            </em>
+        </div>
+        <div class="mask"></div>
+        <div class="mask-shadow"></div>
+    </div>
+    
+    
+
+    
+   
+
+    <div class="container article typo">
+        <div class="wrapper">
+        
+        [(#ENV{edit}|mult{#GET{canEdit}}|=={0}|oui)
+
+            [(#GET{safeSource}|?{#SET{texte,#TEXTE},#SET{texte,#TEXTE|safehtml}})][(#NOTES|?)]
+            [<p class="error">
+            (#STATUT|match{prepa|prop|refuse|poubelle}|oui)
+            [(#STATUT|match{prepa|prop}|oui)<:article_brouillon:>]
+            [(#STATUT|match{refuse}|oui)<:article_refuse:>]
+            [(#STATUT|match{poubelle}|oui)<:article_poubelle:>]
+            </p>]
+        
+            [(#TEXTE|non)<p><em><:article_vide:></em><p>]
+            
+            [[(#TEXTE*|match{<multi>}|non)[(#LANG|!={#ENV{lang}}|oui)<p class="error"><:pas_de_traduction:></p>]]
+            
+            (#GET{texte})]
+            
+            [<hr/>
+            <div class="footnotes">(#NOTES)</div>]
+            
+        ]
+    
+        [(#ENV{edit}|mult{#GET{canEdit}}|=={1}|oui)
+            #FORMULAIRE_EDITER_ARTICLE_PUBLIC{#ID_ARTICLE,#ID_RUBRIQUE}
+        ]   
+            
+        </div>
+        <div class="mask"></div><div class="mask-shadow"></div>
+    </div>
+    
+   [(#STATUT|=={'publie'}|oui)#INCLURE{fond=inc/forum,id_article}]
+   
+   <BOUCLE_readby(AUTEURS){id_auteur=#SESSION{id_auteur}}{si #STATUT|=={'publie'}|oui}{tout}>#MARQUER_ARTICLE_LU</BOUCLE_readby>
+</div>
+</BOUCLE_article></BOUCLE_rubriqueContexte></BOUCLE_articleContexte>#INCLURE{fond=inc/404,env}<//B_articleContexte>

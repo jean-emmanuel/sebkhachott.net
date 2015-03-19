@@ -1,0 +1,48 @@
+[(#ENV{args/download}|match{http}|oui)#SET{download,#ENV{args/download}})]
+<BOUCLE_urldoc(DOCUMENTS){si #ENV{args/download}|match{http}|non}{id_document=#ENV{args/download}}>#SET{download,#URL_DOC_COMPTEUR}</BOUCLE_urldoc>
+
+<B_playlist>
+<div class="audio-player">
+        <div class="controls">
+            <div class="buttons">
+                <!--<a href="#" class="stop"><i class="fa fa-fw fa-stop"></i></a>-->
+                <div class="left">
+                    <a href="#" class="btn play"><i class="fa fa-fw fa-play"></i></a>
+                    <a href="#" class="btn pause"><i class="fa fa-fw fa-pause"></i></a>
+                    <a href="#" class="btn previous"><i class="fa fa-fw fa-backward"></i></a>
+                    <a href="#" class="btn next"><i class="fa fa-fw fa-forward"></i></a>
+                    <a href="#" class="btn volume-toggle"><i class="fa fa-fw fa-volume-up"></i></a>
+                    <div class="btn volume-slider"></div>
+                </div>
+                <div class="right">
+                    [<a href="(#GET{download})" class="btn"><i class="fa fa-fw fa-download"></i></a>]
+                    [<a href="(#ALT)" target="_blank" class="btn" title="<:ecouter_sur:> [(#ALT|parse_url|table_valeur{host}|ucfirst)]"><i class="fa fa-fw fa-music"></i></a>]
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="time">
+                <div class="scrub"></div>
+                <span class="total-time">--:--</span>
+                <span class="current-time">--:--</span>
+            </div>
+        
+        </div>
+        
+        
+        <ol class="playlist">
+            <BOUCLE_playlist(DOCUMENTS){extension==ogg}{id_article=#ID}>
+            <li>
+                <a href="[(#URL_DOC_COMPTEUR)]" class="track">
+                <span>[(#TITRE)][(#TITRE|non)<:sans_titre:>]</span>
+                <audio controls preload="meta"> 
+                  <source src="[(#URL_DOCUMENT)]" type='audio/ogg; codecs="vorbis"'/>
+                </audio>
+                </a>
+            </li>
+            </BOUCLE_playlist>
+        </ol>
+        
+        <p class="error"><:audio_erreur:></p>
+
+</div>
+</B_playlist>

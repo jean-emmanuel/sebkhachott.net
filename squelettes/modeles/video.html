@@ -1,0 +1,19 @@
+<BOUCLE_video(DOCUMENTS){extension==webm|ogv|ogx|mp4|avi}{id_document=#ID}>
+<div class="video-player">
+
+    <div class="background" [(#LOGO_DOCUMENT|extraire_attribut{src}|match{'IMG/'}|oui)data-background="[(#LOGO_DOCUMENT|image_reduire{670,0}|extraire_attribut{src})]"]></div>
+    
+    <a href="#URL_DOCUMENT" target="_blank" class="play" data-fallback="#FALLBACK_VIDEO" data-format>
+        <span class="icon"><i class="fa fa-play"></i></span>
+        <span class="border"></span>
+        [<span class="caption" title="[(#TITRE|ucfirst)]">(#TITRE|ucfirst)</span>]
+        
+    </a>
+    [(#REM) "Champs extras" requis pour le champ FALLBACK_VIDEO sur les documents] 
+    [<a href="(#FALLBACK_VIDEO)" title="<:regarder_sur:> [(#FALLBACK_VIDEO|parse_url|table_valeur{host}|ucfirst)]" target="_blank" class="fallback-link"><i class="fa fa-external-link-square"></i></a>]
+    <video preload="none" src="#URL_DOC_COMPTEUR" data-extension="#EXTENSION" controls>
+        <p class="error">Le format *.#EXTENSION n'est pas pris en charge par ton navigateur, tu peux <a href="#URL_DOC_COMPTEUR">télécharger</a> la video[ ou la lire à cette adresse : (<a href="#FALLBACK_VIDEO">#FALLBACK_VIDEO</a>)].</p>
+    </video>
+
+</div>
+</BOUCLE_video>

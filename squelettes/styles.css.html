@@ -1,0 +1,25 @@
+#HTTP_HEADER{Content-Type: text/css}
+
+$path:"[(#CHEMIN{''}|url_absolue)]";
+[(#ENV{noscript}|non)
+
+#INCLURE{css/reset.css}
+#INCLURE{scss/_vars.scss}
+#INCLURE{scss/_mixins.scss}
+#INCLURE{scss/typo.scss}
+#INCLURE{scss/jquery.nouislider.scss}
+#INCLURE{scss/style.scss}
+
+]
+
+[(#ENV{noscript}|oui)
+
+.image a, .image img {
+    opacity:1!important;
+}
+
+]
+
+
+#CACHE{0}
+#FILTRE{scsscss}

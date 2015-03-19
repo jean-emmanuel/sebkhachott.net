@@ -1,0 +1,9 @@
+[(#HTTP_HEADER{Content-type: text/plain[; charset=(#CHARSET)]})]
+[\[(#NOM_SITE_SPIP|concat{'\] ',<:forum_oubli_mail_sujet:>}|nettoyer_titre_email)]
+
+
+<:forum_oubli_mail_corps:>
+
+[(#ENV{url_reset})]
+
+<:forum_mail_signature:>

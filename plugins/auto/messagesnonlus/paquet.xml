@@ -1,0 +1,19 @@
+<paquet
+	prefix="messagesnonlus"
+	categorie="edition"
+	version="1.0.0"
+	etat="stable"
+	compatibilite="[3.0.0;3.0.*]"
+	schema="1.0.0"
+>
+
+	<nom>messagesnonlus</nom>
+	<!-- Articles/Forums lus ou non par l'auteur connecté ? -->
+
+	<auteur lien="http://ammd.net">Jean-Emmanuel Doucet</auteur>
+	<licence lien="https://www.gnu.org/licenses/gpl.html">GNU/GPL3</licence>
+
+
+	<pipeline nom="declarer_tables_objets_sql" inclure="base/messagesnonlus.php" />
+
+</paquet>

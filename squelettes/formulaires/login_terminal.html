@@ -1,0 +1,31 @@
+<div class="formulaire formulaire_login">
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{_deja_loge})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+
+<form id='formulaire_login' method='post' action='#ENV{action}'>
+	#ACTION_FORMULAIRE{#ENV{action}}
+
+
+
+    <div class="form-item user[ (#ENV**{erreurs}|table_valeur{var_login}|oui)error]">
+        <input placeholder="<:forum_nom:>" type="text" class="text" name="var_login" id="var_login" value="#ENV{var_login}"/>
+    </div>
+    <div class="form-item text pass last[ (#ENV**{erreurs}|table_valeur{password}|oui)error]">
+        <input placeholder="<:forum_pass:>" type="password" class="text" name="password" id="password" value=""/>
+    </div>
+
+
+
+	<small class="float-right"><a href="[(#URL_PAGE{terminal}|parametre_url{return,#ENV{return}}|parametre_url{newpass,1})]" id='spip_pass'><:forum_motpasseoublie:></a></small>
+
+    <p class="form-item send">
+        <input type="submit" class="submit" value="<:forum_confirm:>" />
+	</p>
+    
+    [<span class="error">(#ENV**{erreurs}|table_valeur{var_login})</span>]
+    [<span class="error">(#ENV**{erreurs}|table_valeur{password})</span>]
+</form>
+
+</div>
+

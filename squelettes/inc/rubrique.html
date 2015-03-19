@@ -1,0 +1,85 @@
+<BOUCLE_rubrique(RUBRIQUES){id_rubrique?}>
+<div class="content">
+    #INCLURE{fond=inc/breadcrumbs,env,profondeur,id_rubrique,id_parent,id_secteur}    
+    <div class="container rubrique typo">
+        <div class="wrapper">
+        
+            <BOUCLE_sousrubriques(RUBRIQUES){id_parent=#ID_RUBRIQUE}{par num titre}{si #RECHERCHE|non}>#SET{foundsmth,1}
+            <a class="item sub-rubrique" href="#URL_RUBRIQUE">
+                <h2>[(#TITRE|textebrut|ucfirst|smallcaps)]</h2>
+                <p class="info">
+                    <span class="border"></span><span class="shadow-fix"></span>
+                    <i class="fa fa-[(#ICON|sinon{archive})]"></i>
+                    <span class="articles-count"><BOUCLE_articlesCount(ARTICLES){id_rubrique}> </BOUCLE_articlesCount>#TOTAL_BOUCLE</B_articlesCount>0<//B_articlesCount><i><span> <:forum_sujets_dans:></span></i></span> 
+                </p>
+                <div class="description">            
+                [(#DESCRIPTIF|textebrut|sinon{#TEXTE|couper{240,' \[...\]'}})]  
+                </div> 
+            </a>
+            </BOUCLE_sousrubriques>
+            
+            
+            
+            <BOUCLE_hidden(ARTICLES)>[(#HIDDEN|oui)
+            #SET{hidden,#GET{hidden,#ARRAY}|push{#ID_ARTICLE}}
+            ]</BOUCLE_hidden>
+            <BOUCLE_sticky(ARTICLES){si #ENV{recherche}|non}{id_rubrique}{par num titre}>[(#RANG|!={''}|oui)
+            #SET{articles,#GET{articles,#ARRAY}|push{#ID_ARTICLE}}
+            ]</BOUCLE_sticky>
+            <BOUCLE_futur(ARTICLES){si #ENV{recherche}|non}{id_rubrique}{par date}{age<0}>[(#RANG|=={''}|oui)
+            #SET{articles,#GET{articles,#ARRAY}|push{#ID_ARTICLE}}
+            ]</BOUCLE_futur>
+            <BOUCLE_normal(ARTICLES){si #ENV{recherche}|non}{id_rubrique}{!par date}{age>=0}>[(#RANG|=={''}|oui)
+            #SET{articles,#GET{articles,#ARRAY}|push{#ID_ARTICLE}}
+            ]</BOUCLE_normal>
+            
+            <BOUCLE_recherche(ARTICLES){si #ENV{recherche}|oui}{recherche}{!par points}>
+            [(#HIDDEN|non)#SET{articles,#GET{articles,#ARRAY}|push{#ID_ARTICLE}}]
+            </BOUCLE_recherche>
+            
+            <BOUCLE_rechercheAuteur(AUTEURS){si #ENV{recherche}|match{from:}|oui}{recherche #ENV{recherche}|replace{from:}}{!par points}>
+                <BOUCLE_rechercheArticlesAuteur(ARTICLES){!par date}{id_auteur}>
+                [(#HIDDEN|non)#SET{articles,#GET{articles,#ARRAY}|push{#ID_ARTICLE}}]
+                </BOUCLE_rechercheArticlesAuteur>
+            </BOUCLE_rechercheAuteur>
+
+            #SET{articles, #GET{articles}|array_diff{#GET{hidden,#ARRAY}}}
+
+            <BOUCLE_articlesList(ARTICLES){id_article IN #GET{articles}}{pagination 10}>
+            <a class="item" href="#URL_ARTICLE">
+                
+                <h2>[(#TITRE|textebrut|ucfirst|smallcaps)]<BOUCLE_forumsCount(FORUMS){id_article}> </BOUCLE_forumsCount><sup class="forums-count">#TOTAL_BOUCLE <i class="fa fa-comments-o"><span><:forum_messages_dans:></span></i></sup></B_forumsCount></h2>
+                <p class="info[ (#RANG|=={''}|oui)[(#DATE|>{#ENV{date}}|non)past]]" title="[(#DATE|affdate)]">
+                    <span class="border"></span><span class="shadow-fix"></span>
+                    [(#RANG|!={''}|oui)<i class="fa fa-[(#ICON|sinon{file-text})]"></i>]
+                    [(#RANG|=={''}|oui)<span class="day">[(#DATE|affdate{'d'})]</span>[(#DATE|annee|=={#ENV{date}|annee}|oui)<span class="month">[(#DATE|nom_mois|couper{4})]</span>][(#DATE|annee|=={#ENV{date}|annee}|non)<span class="month-year">[(#DATE|affdate{'m/y'})]</span>]]
+                </p>
+                <div class="description">
+                <B_auteur><:forum_par:>
+                <BOUCLE_auteur(AUTEURS){si #DESCRIPTIF|non}{id_article}{', '}>#SET{author,#NOM}
+                     [(#GET{author,???})]
+                </BOUCLE_auteur>         
+                    [(#DESCRIPTIF|textebrut)]
+                <//B_auteur>  
+                </div> 
+            </a>
+            </BOUCLE_articlesList>
+            #SET{pagination,#PAGINATION{page}}
+            </B_articlesList>
+            [(#GET{foundsmth}|non)<p><em><:aucun_resultat:></em></p>]
+            <//B_articlesList>
+
+
+
+        </div>
+        #GET{pagination}
+
+
+        [(#REM)[(#ID_RUBRIQUE|=={5}|oui)#INCLURE{fond=shoutbox}]]
+        
+        
+        
+        <div class="mask"></div><div class="mask-shadow"></div>
+    </div>
+</div>
+</BOUCLE_rubrique>
