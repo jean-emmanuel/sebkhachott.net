@@ -1,13 +1,13 @@
-<BOUCLE_rubrique(RUBRIQUES){tout}{id_rubrique=#ID_RUBRIQUE}>
-#INCLURE{fond=inc/head,env,lang=#ENV{lang,#USER_LANG}}
+<BOUCLE_rubrique(RUBRIQUES){tout}{id_rubrique=#ID_RUBRIQUE}>[(#REM)
+]#INCLURE{fond=inc/head,env}
 
 #EVAL{'chr(10)'}#EVAL{'chr(10)'}
 
-#INCLURE{fond=inc/rubrique,env,lang=#ENV{lang,#USER_LANG}}
+#INCLURE{fond=inc/rubrique,env}
 
 #EVAL{'chr(10)'}#EVAL{'chr(10)'}
 
-#INCLURE{fond=inc/foot,env,lang=#ENV{lang,#USER_LANG}}
+#INCLURE{fond=inc/foot,env}
 </BOUCLE_rubrique>
-#INCLURE{fond=404,env,lang=#ENV{lang,#USER_LANG}}
+#INCLURE{fond=404,env}
 <//B_rubrique>

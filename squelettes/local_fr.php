@@ -40,7 +40,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'forum_confirm' => 'Confirmer',
     'forum_inscription' => 'S\'inscrire',
     'forum_proposer' => 'Proposer',
-    'forum_voir_article' => 'Voir l\'article',
+    'forum_nouveau_sujet' => 'Nouveau sujet',
     
     'forum_attention_dix_caracteres' => 'Ton propos est inepte et/ou trop court. Révise ton flow.',
     'forum_nom_pas_conforme' => 'Joue pas au plus malin...',
@@ -115,11 +115,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'nav_fermer' => 'Fermer',
     'nav_retour' => 'Retour',
     'nav_forum' => 'Commentaires',
-    
+    'nav_rechercher' => 'Rechercher',
+     
     // P
     'precommander' => 'Precommander maintenant !',
     // R
-    'rechercher' => 'Rechercher...',
+
     'regarder_sur' => 'Regarder sur',
     
     // S 

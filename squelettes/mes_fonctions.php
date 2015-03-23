@@ -36,15 +36,7 @@
     $GLOBALS['fin_intertitre'] = '</h3>';
     $GLOBALS['debut_italique'] = '<em>';
     $GLOBALS['fin_italique'] = '</em>';
-    
-
-    
-    // balise de langue navigateur
-	function balise_USER_LANG($p) {
-	    $p->code = explode(',',explode(';',$_SERVER['HTTP_ACCEPT_LANGUAGE'])[0])[0];
-        return $p;
-	}
-		
+    		
     function smallcaps($str){
         $str = preg_replace('([A-Z]{1})','<span class="caps">$0</span>',$str);
         return $str;
@@ -52,6 +44,13 @@
     function tinylinks($str){
         $str = preg_replace('(http[s]?:\/\/[^\s]*)','<a href="$0"><i class="fa fa-link"></i></a>',$str);
         return $str;
+    }
+    
+    
+    function cleanLines($html) {
+        $html = preg_replace('/\n[\s]*\n/',"\n\n",$html);
+        return $html;
+    
     }
 
     // Necessite d'ajouter le suffixe _dist à la fonction originale dans plugins/auto/saisies/.../saisies_pipeline.php

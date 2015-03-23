@@ -67,21 +67,21 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="<:twitter:>">
     
-    <link rel="stylesheet" href="[(#CHEMIN{css/league-gothic.css})]" />
-    <link rel="stylesheet" href="[(#CHEMIN{css/ubuntu.css})]" />
-    <link rel="stylesheet" href="[(#CHEMIN{css/font-awesome.min.css})]" />
-    [(#GET{prod}|oui)<link rel="stylesheet" href="[(#PRODUIRE{fond=styles.css})]" />]
-    [(#GET{prod}|non)<link rel="stylesheet" href="[(#URL_PAGE{styles.css})]" />]
+    <!-- (S)CSS / source : [(#CHEMIN{styles.css.html})] -->
+   [(#GET{prod}|oui)<link rel="stylesheet" href="[(#PRODUIRE{fond=styles.css})]" />
+    ][(#GET{prod}|non)<link rel="stylesheet" href="[(#URL_PAGE{styles.css})]" />]
     
     <!-- JS / source : [(#CHEMIN{scripts.js.html})] -->
-    [(#GET{prod}|oui)<script src="[(#PRODUIRE{fond=scripts.js}|compacte)]"></script>]
-    [(#GET{prod}|non)<script src="#URL_PAGE{scripts.js}"></script>]
+   [(#GET{prod}|oui)<script src="[(#PRODUIRE{fond=scripts.js}|compacte)]"></script>
+    ][(#GET{prod}|non)<script src="#URL_PAGE{scripts.js}"></script>]
     
     <noscript>
         <link rel="stylesheet" href="[(#PRODUIRE{fond=styles.css,noscript=1})]" />
+        <link rel="stylesheet" href="[(#CHEMIN{css/league-gothic.css})]" />
+        <link rel="stylesheet" href="[(#CHEMIN{css/ubuntu.css})]" />
+        <link rel="stylesheet" href="[(#CHEMIN{css/font-awesome.min.css})]" />
     </noscript>
     
-
 </head>
 
 <body id="top">

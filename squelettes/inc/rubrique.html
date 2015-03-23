@@ -1,6 +1,8 @@
 <BOUCLE_rubrique(RUBRIQUES){id_rubrique?}>
 <div class="content">
-    #INCLURE{fond=inc/breadcrumbs,env,profondeur,id_rubrique,id_parent,id_secteur}    
+
+    [(#INCLURE{fond=inc/breadcrumbs,env,profondeur,id_rubrique,id_parent,id_secteur})]    
+    
     <div class="container rubrique typo">
         <div class="wrapper">
         
@@ -82,4 +84,4 @@
         <div class="mask"></div><div class="mask-shadow"></div>
     </div>
 </div>
-</BOUCLE_rubrique>
+</BOUCLE_rubrique>#FILTRE{cleanLines}

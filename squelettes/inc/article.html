@@ -11,7 +11,8 @@
 
 <BOUCLE_articleContexte(ARTICLES){id_article=#ID_ARTICLE}{statut IN #GET{statlist}}><BOUCLE_rubriqueContexte(RUBRIQUES){id_rubrique=#ID_RUBRIQUE}><BOUCLE_article(ARTICLES){id_article?}{statut IN #GET{statlist}}>
 <div class="content">
-    #INCLURE{fond=inc/breadcrumbs,env,profondeur,id_rubrique,id_article,id_parent,canEdit=#GET{canEdit},id_secteur=#_rubriqueContexte:ID_SECTEUR}    
+    
+    [(#INCLURE{fond=inc/breadcrumbs,env,profondeur,id_rubrique,id_article,id_parent,canEdit=#GET{canEdit},id_secteur=#_rubriqueContexte:ID_SECTEUR})]    
 
     [(#BLUR|oui)#SET{bg,#LOGO_ARTICLE|image_reduire{400,0}|image_flou{10}|image_recadre{380,140,#BG_POSITION}}]
     [(#BLUR|non)#SET{bg,#LOGO_ARTICLE|image_reduire{800,0}|image_recadre{0,280,#BG_POSITION}]
@@ -44,7 +45,7 @@
         
         [(#ENV{edit}|mult{#GET{canEdit}}|=={0}|oui)
 
-            [(#GET{safeSource}|?{#SET{texte,#TEXTE},#SET{texte,#TEXTE|safehtml}})][(#NOTES|?)]
+            [(#GET{safeSource}|?{#SET{texte,#TEXTE},#SET{texte,#TEXTE|safehtml}})][(#SET{notes,#NOTES})]
             [<p class="error">
             (#STATUT|match{prepa|prop|refuse|poubelle}|oui)
             [(#STATUT|match{prepa|prop}|oui)<:article_brouillon:>]
@@ -59,7 +60,7 @@
             (#GET{texte})]
             
             [<hr/>
-            <div class="footnotes">(#NOTES)</div>]
+            <div class="footnotes">(#GET{notes})</div>]
             
         ]
     
@@ -75,4 +76,4 @@
    
    <BOUCLE_readby(AUTEURS){id_auteur=#SESSION{id_auteur}}{si #STATUT|=={'publie'}|oui}{tout}>#MARQUER_ARTICLE_LU</BOUCLE_readby>
 </div>
-</BOUCLE_article></BOUCLE_rubriqueContexte></BOUCLE_articleContexte>#INCLURE{fond=inc/404,env}<//B_articleContexte>
+</BOUCLE_article></BOUCLE_rubriqueContexte></BOUCLE_articleContexte>#INCLURE{fond=inc/404,env}<//B_articleContexte>#FILTRE{cleanLines}

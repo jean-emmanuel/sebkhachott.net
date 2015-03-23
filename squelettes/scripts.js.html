@@ -1,5 +1,25 @@
 #HTTP_HEADER{Content-Type: text/javascript}
 
+#INCLURE{js/webfontloader.js}
+
+WebFont.load({
+  custom: {
+    families: ['FontAwesome','Ubuntu','League Gothic'],
+    urls: ['#CHEMIN{css/font-awesome.min.css}','#CHEMIN{css/league-gothic.css}','#CHEMIN{css/ubuntu.css}'],
+    testStrings: {
+      'FontAwesome': '',
+      'League Gothic':'SEBKHA-CHOTT1234'
+    }
+  },
+  fontactive: function(familyName, fvd) {
+    $('html').addClass(familyName.toLowerCase().replace(' ','') + '-loaded');
+  },
+  fontinactive: function(familyName, fvd) {
+    $('html').addClass(familyName.toLowerCase().replace(' ','') + '-failed');
+  },
+  classes:false
+});
+
 #INCLURE{js/jquery.min.js}
 #INCLURE{js/prefixfree.min.js}
 #INCLURE{js/jquery.nouislider.all.min.js}
@@ -14,8 +34,18 @@
 
 [(#REM)]
 
+			
+
+
+
+
+// placeholder fallback thanks @ n33.co (html5up)
+$.fn.n33_formerize=function(){var _fakes=new Array(),_form = $(this);_form.find('input[type=text],textarea').each(function() { var e = $(this); if (e.val() == '' || e.val() == e.attr('placeholder')) { e.addClass('formerize-placeholder'); e.val(e.attr('placeholder')); } }).blur(function() { var e = $(this); if (e.attr('name').match(/_fakeformerizefield$/)) return; if (e.val() == '') { e.addClass('formerize-placeholder'); e.val(e.attr('placeholder')); } }).focus(function() { var e = $(this); if (e.attr('name').match(/_fakeformerizefield$/)) return; if (e.val() == e.attr('placeholder')) { e.removeClass('formerize-placeholder'); e.val(''); } }); _form.find('input[type=password]').each(function() { var e = $(this); var x = $($('<div>').append(e.clone()).remove().html().replace(/type="password"/i, 'type="text"').replace(/type=password/i, 'type=text')); if (e.attr('id') != '') x.attr('id', e.attr('id') + '_fakeformerizefield'); if (e.attr('name') != '') x.attr('name', e.attr('name') + '_fakeformerizefield'); x.addClass('formerize-placeholder').val(x.attr('placeholder')).insertAfter(e); if (e.val() == '') e.hide(); else x.hide(); e.blur(function(event) { event.preventDefault(); var e = $(this); var x = e.parent().find('input[name=' + e.attr('name') + '_fakeformerizefield]'); if (e.val() == '') { e.hide(); x.show(); } }); x.focus(function(event) { event.preventDefault(); var x = $(this); var e = x.parent().find('input[name=' + x.attr('name').replace('_fakeformerizefield', '') + ']'); x.hide(); e.show().focus(); }); x.keypress(function(event) { event.preventDefault(); x.val(''); }); });  _form.submit(function() { $(this).find('input[type=text],input[type=password],textarea').each(function(event) { var e = $(this); if (e.attr('name').match(/_fakeformerizefield$/)) e.attr('name', ''); if (e.val() == e.attr('placeholder')) { e.removeClass('formerize-placeholder'); e.val(''); } }); }).bind("reset", function(event) { event.preventDefault(); $(this).find('select').val($('option:first').val()); $(this).find('input,textarea').each(function() { var e = $(this); var x; e.removeClass('formerize-placeholder'); switch (this.type) { case 'submit': case 'reset': break; case 'password': e.val(e.attr('defaultValue')); x = e.parent().find('input[name=' + e.attr('name') + '_fakeformerizefield]'); if (e.val() == '') { e.hide(); x.show(); } else { e.show(); x.hide(); } break; case 'checkbox': case 'radio': e.attr('checked', e.attr('defaultValue')); break; case 'text': case 'textarea': e.val(e.attr('defaultValue')); if (e.val() == '') { e.addClass('formerize-placeholder'); e.val(e.attr('placeholder')); } break; default: e.val(e.attr('defaultValue')); break; } }); window.setTimeout(function() { for (x in _fakes) _fakes[x].trigger('formerize_sync'); }, 10); }); return _form; };
+
 
 $(function() {
+
+    $('form').n33_formerize();
     
     $('a').click(function(){
         $(this).blur();
@@ -36,24 +66,37 @@ $(function() {
     }); 
     
     
-    if ($(window).width()<=800) {
-        $('nav .subnav').appendTo('.content').addClass('mobile-nav').append('<div class="overlay"></div>');
-        $('#search').wrap('<li class="mobile-search"></li>');
-        $('li.mobile-search').appendTo('.mobile-nav');
-        $('.mobile-search a').addClass('button');
+    function checkMobile() {
+        if ($(window).width()<=800 && !$('body').hasClass('mobile-view')) {
+            $('body').addClass('mobile-view');
+            $('nav .subnav').appendTo('.content').addClass('mobile-nav').hide();
+            $('#search').parent().appendTo('.mobile-nav');
+            $('#search a').addClass('button');
+            
+            $('.navopen').click(function(e){
+                $('.mobile-nav').addClass('open');
+                $('.mobile-nav, .mobile-nav .overlay').fadeIn(200);
+                $('body, html').animate({'scrollTop':0});
+                e.preventDefault();
+            })
+            $('.mobile-nav .overlay').click(function(){
+                $('.mobile-nav').removeClass('open');
+                $('.mobile-nav, .mobile-nav .overlay').fadeOut(200);
+            })
+            return true
         
-        $('.navopen').click(function(e){
-            $('.mobile-nav').addClass('open');
-            $('.mobile-nav, .mobile-nav .overlay').fadeIn(200);
-            e.preventDefault();
-        })
-        $('.mobile-nav .overlay').click(function(){
-            $('.mobile-nav').removeClass('open');
-            $('.mobile-nav, .mobile-nav .overlay').fadeOut(200);
-        })
-    
+        } else if ($(window).width()>800 && $('body').hasClass('mobile-view')) {
+            $('body').removeClass('mobile-view');
+            $('.mobile-nav').prependTo('.content > nav').removeClass('mobile-nav').show();
+            $('#search').parent().prependTo('ul.tools');
+
+            $('#search a').removeClass('button');
+        }
+        
     }
     
+    checkMobile();
+    $(window).resize(checkMobile);
 
     function lazyload() {
         $('body').find('[data-background]').each(function(){
@@ -86,14 +129,16 @@ $(function() {
                     $('.scrolledTo').removeClass('scrolledTo');
                     $(id).addClass('scrolledTo');
                     
-                    $('html, body').scrollTop($(id).offset().top-170);
+                    $('html, body').scrollTop($(id).offset().top-$(window).height()/2+35);
                     
                 }
             }
     });
     if (location.hash.length>1) {
         if ($(location.hash).length) {
-            $('html, body').scrollTop($(location.hash).offset().top-170);
+            setTimeout(function(){
+                $('html, body').scrollTop($(location.hash).offset().top-$(window).height()/2+35);
+            },1);
             $(location.hash).addClass('scrolledTo');
         }
     }

@@ -52,7 +52,13 @@
 		    AND autoriser('creer', 'article');
     }  
     
-
+    // Definir la langue selon le navigateur sauf si le parametre de langue est précisé dans l'url 
+    if (!$_GET['lang']) {
+        $lang = explode(',',explode(';',$_SERVER['HTTP_ACCEPT_LANGUAGE'])[0])[0];
+        $lang = preg_replace('/\-[a-Z]/','',$lang);
+        set_request('lang', $lang);
+    }    
+    
     define('_NOTES_OUVRE_REF',' <sup>');
     define('_NOTES_FERME_REF','</sup> ');
     define('_NOTES_OUVRE_NOTE','<span>[');

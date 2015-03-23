@@ -4,13 +4,14 @@
         <ul class="subnav">
             <BOUCLE_subNav(RUBRIQUES){profondeur=0}{par num titre}><li><a href="#URL_RUBRIQUE"[ class="(#EXPOSE)"]>[(#TITRE|textebrut)]</a></li>
             </BOUCLE_subNav>
+            <span class="overlay"></span>
         </ul>
         <ul class="tools">
             [(#PAGE|=={rubrique}|oui)
             <li><form id="search" class="typo search[ (#ENV{recherche}|oui)active]" action="#SELF" method="get">
                 <input name="id_rubrique" value="#ID_RUBRIQUE" type="hidden"/>
                 <input name="page" value="#PAGE" type="hidden"/>
-                <input type="text" class="text" name="recherche" placeholder="<:rechercher:>"[ value="(#ENV{recherche})"]/>
+                <input type="text" class="text" name="recherche" placeholder="<:nav_rechercher:>..."[ value="(#ENV{recherche})"]/>
                 <input type="submit" class="submit" value="<:nav_rechercher:>"/>
                 <a title="<:nav_rechercher:>" class="[ (#ENV{recherche}|oui)active]" href="#" onclick="$('#search').submit();return false;"><i class="fa fa-fw fa-search"><span><:nav_rechercher:></span></i></a>
                 

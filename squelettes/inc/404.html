@@ -1,5 +1,6 @@
 <div class="content">
-    #INCLURE{fond=inc/breadcrumbs,env,profondeur,id_rubrique,id_parent}    
+
+    [(#INCLURE{fond=inc/breadcrumbs,env,profondeur,id_rubrique,id_parent})]
     
     <div class="header no-image">
         
@@ -18,4 +19,4 @@
         </div>
         <div class="mask"></div><div class="mask-shadow"></div>
     </div>
-</div>
+</div>#FILTRE{cleanLines}

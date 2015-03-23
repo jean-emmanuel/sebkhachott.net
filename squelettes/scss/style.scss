@@ -4,12 +4,45 @@
 
 body, html {
     height:100%;
+    background-color:$bg-color;
 }
 body {
-    background-color:$bg-color;
     overflow-y:scroll;
+    image-rendering:optimizeQuality;
 }
+.loading-screen {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:$bg-color;
 
+    z-index:10;
+    &:after {
+        content:"";
+        position:fixed;
+        top:50%;
+        left:50%;
+        background-image:url(#{$path}assets/logo_big.png);
+        background-repeat:no-repeat;
+        background-position:center; 
+        background-size:100% auto;
+        width:80px;
+        height:100px;
+        margin:-50px 0 0 -40px;
+    }
+    span {
+        position:fixed;
+        top:50%;
+        left:50%;
+        width:300px;
+        margin:-.5em 0 0 50px;
+        
+        font-size:.9em;
+    }
+}
 .greeter {
     position:fixed;
     text-align:center;
@@ -291,7 +324,7 @@ body {
             outline:0;
         }
         .logo:hover + .logo-fix:after {
-            //background-color:$color-link;
+            background-color:$color-link;
         }
         .logo-fix {
             width:40px;
@@ -301,6 +334,17 @@ body {
             top:0;
             left:0px;
             z-index:1;
+            &:after {
+                content:"";
+                z-index:200;
+                width:30px;
+                height:10px;
+                background:transparent;
+                position:absolute;
+                left:25px;
+                top:30px;
+                transition:background-color .15s;
+            }
         }
         .shadow {
             position:absolute;

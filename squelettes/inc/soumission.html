@@ -9,8 +9,7 @@
         
         <div class="title">
             <em>[(#DATE|>{#ENV{date}}|?{#DATE|affdate_heure|textebrut|replace{'h(\[0-9\]+)min','h$1'},#DATE|affdate|textebrut})]</em>
-            <h1>[(#GET{xxxXXx,<:nouvel_article:>}|textebrut|ucfirst|smallcaps)]</h1>
-            [<em class="desc">(#DESCRIPTIF)</em>]
+            <h1>[(#GET{xxxXXx,<:forum_nouveau_sujet:>}|smallcaps)]</h1>
         </div>
         <div class="mask"></div>
         <div class="mask-shadow"></div>
@@ -28,4 +27,4 @@
         <div class="mask"></div><div class="mask-shadow"></div>
     </div>
 </div>
-</BOUCLE_rubriqueContexte>
+</BOUCLE_rubriqueContexte>#FILTRE{cleanLines}
