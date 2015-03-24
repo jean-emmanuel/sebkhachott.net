@@ -25,7 +25,7 @@
             <em class="desc">
            <B_auteurdesc><:forum_par:>
             <BOUCLE_auteurdesc(AUTEURS){si #DESCRIPTIF|non}{id_article}{', '}>#SET{author,#NOM}
-                 [(#GET{author,???})]
+                 [(#GET{author,???}|textebrut|ucfirst|smallcaps)]
             </BOUCLE_auteurdesc>         
                 [(#DESCRIPTIF|textebrut)]
             <//B_auteurdesc>  

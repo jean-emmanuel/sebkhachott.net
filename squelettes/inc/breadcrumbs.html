@@ -31,9 +31,9 @@
             
             <li><a class="plug"  title="<:nav_terminal:>" href="[(#URL_PAGE{terminal}|parametre_url{return,#SELF})]"><i class="fa fa-fw fa-user"><span><:nav_terminal:></span></i></a></li>
             
-            [(#SESSION{id_auteur}|!={''}|oui)
+            [(#SESSION{id_auteur}|!={''}|oui)[(#PAGE|=={terminal}|oui)
             <li><a href="#URL_LOGOUT"  title="<:nav_deconnexion:>" class="logout"><i class="fa fa-power-off"><span><:nav_deconnexion:></span></i></a></li>
-            ]
+            ]]
             
             [(#PAGE|=={terminal}|oui)
             <li><a class="back"  title="<:nav_retour:>" href="#ENV{return}"><i class="fa fa-fw fa-undo"><span><:nav_retour:></span></i></a></li>

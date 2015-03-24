@@ -28,7 +28,7 @@
     }
     
     
-    $GLOBALS['flag_preserver'] = true;
+    ;
     $GLOBALS['puce'] = '<i class="fa fa-angle-right"></i>&nbsp;';
     $GLOBALS['class_spip_plus'] = '';
     $GLOBALS['ligne_horizontale'] = '<hr/>';
@@ -38,7 +38,7 @@
     $GLOBALS['fin_italique'] = '</em>';
     		
     function smallcaps($str){
-        $str = preg_replace('([A-Z]{1})','<span class="caps">$0</span>',$str);
+        $str = preg_replace('([A-Z]{1})','<span class="smallcap">$0</span>',$str);
         return $str;
     }
     function tinylinks($str){

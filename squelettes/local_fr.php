@@ -13,6 +13,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'anonyme' => 'Anonyme',
     'audio_erreur' => 'Ton navigateur ne prend pas en charge le format audio libre ogg ! Dommage.',
     
+    // C
+    'collecte_souscrire' => 'Préacheter !',
     
 
     

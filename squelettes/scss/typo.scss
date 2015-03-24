@@ -5,6 +5,7 @@ body  {
 }
 
 
+
 a {
     color:inherit;
     
@@ -33,6 +34,9 @@ iframe {
 i span {
     position:absolute;
     left:-9999px;
+}
+.smallcap {
+    font-size:1.15em;
 }
 .typo {
 
@@ -124,7 +128,7 @@ i span {
 	
 	.error {
 	    color:rgba(red,.4);
-	}
+    }
 	
     /* LISTS */
 
@@ -267,7 +271,7 @@ i span {
 	    background-color:mix($bg-color-1,black,.75);
 	    padding:.45em;
 	    padding-left:2em;
-	    border-bottom:2px solid transparent;
+	    margin-bottom:2px;
 	    background-clip:padding-box;
 	    display:block;
         //margin-bottom:2px;
@@ -463,6 +467,12 @@ i span {
         
         &.full {
             width:100%;
+        }
+        
+        &.big {
+            height:3em;
+            line-height:3em;
+            text-transform:uppercase;
         }
 
 		&:hover {

@@ -166,9 +166,9 @@ $(function() {
         popupCloserTextSize:'1.2em',
         popupBackgroundColor:'rgb(0,0,0)'
     });
-    $('.greeter .message').poptrox({
-        selector:'.popup',
-        usePopupNav:true,
+    $('.container').poptrox({
+        selector:'.popup-frame',
+        usePopupNav:false,
         usePopupCaption:true,
         popupBlankCaptionText:'',
         caption: { selector: ".caption" },
@@ -177,7 +177,7 @@ $(function() {
         popupCloserBackgroundColor:'transparent',
         popupCloserText:'<i class="fa fa-close"></i>',
         popupCloserTextSize:'1.2em',
-        popupBackgroundColor:'#fff'
+        popupBackgroundColor:'rgb(255,255,255)'
     });
     
     $('ul').each(function(){

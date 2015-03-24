@@ -1,6 +1,6 @@
 <?php
     if (!defined('_ECRIRE_INC_VERSION')) return;
-	define('_NO_CACHE', -1); 
+	//define('_NO_CACHE', -1); 
 	
     // ajouter le critère {tout} aux boucles rubriques si pas de présence d'un critère {statut}
     $GLOBALS['spip_pipeline']['pre_boucle'] .= "|tout_partout";
@@ -58,7 +58,7 @@
         $lang = preg_replace('/\-[a-Z]/','',$lang);
         set_request('lang', $lang);
     }    
-    
+    $flag_preserver = true;
     define('_NOTES_OUVRE_REF',' <sup>');
     define('_NOTES_FERME_REF','</sup> ');
     define('_NOTES_OUVRE_NOTE','<span>[');

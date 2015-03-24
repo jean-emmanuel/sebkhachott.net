@@ -486,6 +486,9 @@ body {
             transition: opacity .25s;
             &.loaded {
                 opacity:.6;
+                @media all and (max-width:$width) {
+                    opacity:.4
+                }
             }
         }
 
@@ -508,21 +511,21 @@ body {
                 text-shadow:0 0 10px $black; 
             }
             em {
-                line-height:3;
+                line-height:1.5em;
                 color:$color-1;
                 font-size:.9em;
             }
             h1 {
                 font-size:1.6em;
-                .caps {
-                    font-size:1.15em;
-                }
+                margin-top:.55em;
+
             }
             .desc {
                 padding-top:.2em;
                 display:block;
                 line-height:1.5em;
                 margin-top:1em;
+                margin-bottom:0;
             }
         }
         
@@ -1647,6 +1650,42 @@ $audio-player-bg:mix($bg-color-1,black,.75);
 #search .submit {
     display:none;
 }
+
+
+.fundprogress {
+    background:mix($bg-color-1,black,.75);
+    margin-bottom:$text-bottom-margin;
+    height:3em;
+    position:relative;
+    border-radius:3px;
+    overflow:hidden;
+    
+    div {
+        background:rgba($color-link,.5);
+        position:absolute;
+        left:0;
+        top:0;
+        height:100%;
+        box-shadow: 0 0 10px 0 #111;
+    }
+    span {
+        position:absolute;
+        left:0;
+        top:0;
+        height:100%;
+        line-height:3em;
+        width:100%;
+        text-align:center;
+        font-weight:bold;
+        z-index:1;
+        
+    }
+
+}
+
+
+
+
 
 
 /*
