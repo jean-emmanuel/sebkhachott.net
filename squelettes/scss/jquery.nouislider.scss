@@ -75,7 +75,7 @@
 	background: $bg-color;
 }
 .noUi-connect {
-	background: $color-link;
+	background: $color-2;
 -webkit-transition: background 450ms;
 	transition: background 450ms;
 }
@@ -99,7 +99,7 @@
 
 .noUi-handle {
 	border-radius: 2px;
-	background: $color-2;
+	background: $color-link;
 	cursor: pointer;
 
 }

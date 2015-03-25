@@ -23,7 +23,7 @@
         $flux = str_replace('////','<div class="clear"></div>',$flux);
         $flux = preg_replace('/-:-(.*)-:-/','<p class="align-center">$1</p>',$flux);
         $flux = preg_replace('/--:(.*)--:/','<p class="align-right">$1</p>',$flux);
-        $flux = preg_replace('/<ref>(.*)<\/ref>/','<p class="align-right"><em>-- $1</em></p>',$flux);
+        $flux = preg_replace('/<ref>(.*)<\/ref>/','<p class="align-right reference"><em>-- $1</em></p>',$flux);
         $flux = preg_replace('/====(.*)====/','<p class="strike-through">$1</p>',$flux);
         $flux = preg_replace('/==(.*)====/','<p class="strike-through align-left">$1</p>',$flux);
         $flux = preg_replace('/====(.*)==/','<p class="strike-through align-right">$1</p>',$flux);
@@ -55,12 +55,17 @@
     // Definir la langue selon le navigateur sauf si le parametre de langue est précisé dans l'url 
     if (!$_GET['lang']) {
         $lang = explode(',',explode(';',$_SERVER['HTTP_ACCEPT_LANGUAGE'])[0])[0];
-        $lang = preg_replace('/\-[a-Z]/','',$lang);
-        set_request('lang', $lang);
-    }    
+        $lang = preg_replace('/\-[a-z]+/','',$lang);
+        if (strtolower($lang) == 'fr') {
+            set_request('lang', 'fr');
+        } else {
+            set_request('lang', 'en');
+        }
+    }
+     
     $flag_preserver = true;
     define('_NOTES_OUVRE_REF',' <sup>');
     define('_NOTES_FERME_REF','</sup> ');
-    define('_NOTES_OUVRE_NOTE','<span>[');
-    define('_NOTES_FERME_NOTE',']</span> ');
+    define('_NOTES_OUVRE_NOTE','<span>');
+    define('_NOTES_FERME_NOTE','</span> ');
 ?>

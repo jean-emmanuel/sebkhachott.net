@@ -127,7 +127,7 @@ i span {
 
 	
 	.error {
-	    color:rgba(red,.4);
+	    color:#590000;
     }
 	
     /* LISTS */
@@ -444,7 +444,7 @@ i span {
 		color: $color-link !important;
 		cursor: pointer;
 		display: inline-block;
-		font-weight: bold;
+		//font-weight: bold;
 		height: 2.2em;
 		line-height: 2em;
 		padding: 0 1em;
@@ -524,6 +524,11 @@ i span {
 		:last-child {
 		    margin-bottom:0;
 		}
+	}
+	blockquote + .reference {
+	    position:relative;
+	    top:-$text-bottom-margin/2;
+	    em {width:66.66%;display:inline-block}
 	}
 
 	code {

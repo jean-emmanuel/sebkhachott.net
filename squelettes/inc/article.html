@@ -10,7 +10,7 @@
 </BOUCLE_auteur_art>
 
 <BOUCLE_articleContexte(ARTICLES){id_article=#ID_ARTICLE}{statut IN #GET{statlist}}><BOUCLE_rubriqueContexte(RUBRIQUES){id_rubrique=#ID_RUBRIQUE}><BOUCLE_article(ARTICLES){id_article?}{statut IN #GET{statlist}}>
-<div class="content">
+<div class="page">
     
     [(#INCLURE{fond=inc/breadcrumbs,env,profondeur,id_rubrique,id_article,id_parent,canEdit=#GET{canEdit},id_secteur=#_rubriqueContexte:ID_SECTEUR})]    
 
@@ -41,7 +41,7 @@
    
 
     <div class="container article typo">
-        <div class="wrapper">
+        <div class="content">
         
         [(#ENV{edit}|mult{#GET{canEdit}}|=={0}|oui)
 

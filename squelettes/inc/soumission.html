@@ -1,5 +1,5 @@
 <BOUCLE_rubriqueContexte(RUBRIQUES){id_rubrique=#ENV{id_rubrique}}>
-<div class="content">
+<div class="page">
     #INCLURE{fond=inc/breadcrumbs,env,profondeur,id_rubrique,id_article,id_parent}    
 
     [(#BLUR|oui)#SET{bg,#LOGO_ARTICLE|image_reduire{400,0}|image_flou{10}|image_recadre{380,140,#BG_POSITION}}]
@@ -18,7 +18,7 @@
    
 
     <div class="container article typo">
-        <div class="wrapper">
+        <div class="content">
 
             #FORMULAIRE_EDITER_ARTICLE_PUBLIC{new,#ENV{id_rubrique}}
             

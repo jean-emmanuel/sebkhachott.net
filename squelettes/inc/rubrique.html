@@ -1,10 +1,10 @@
 <BOUCLE_rubrique(RUBRIQUES){id_rubrique?}>
-<div class="content">
+<div class="page">
 
     [(#INCLURE{fond=inc/breadcrumbs,env,profondeur,id_rubrique,id_parent,id_secteur})]    
     
     <div class="container rubrique typo">
-        <div class="wrapper">
+        <div class="content">
         
             <BOUCLE_sousrubriques(RUBRIQUES){id_parent=#ID_RUBRIQUE}{par num titre}{si #RECHERCHE|non}>#SET{foundsmth,1}
             <a class="item sub-rubrique" href="#URL_RUBRIQUE">
@@ -51,7 +51,7 @@
             <a class="item" href="#URL_ARTICLE">
                 
                 <h2>[(#TITRE|textebrut|ucfirst|smallcaps)]<BOUCLE_forumsCount(FORUMS){id_article}> </BOUCLE_forumsCount><sup class="forums-count">#TOTAL_BOUCLE <i class="fa fa-comments-o"><span><:forum_messages_dans:></span></i></sup></B_forumsCount></h2>
-                <p class="info[ (#RANG|=={''}|oui)[(#DATE|>{#ENV{date}}|non)past]]" title="[(#DATE|affdate)]">
+                <p class="info[(#DATE|>{#ENV{date}}|oui)futur]" title="[(#DATE|affdate)]">
                     <span class="border"></span><span class="shadow-fix"></span>
                     [(#RANG|!={''}|oui)<i class="fa fa-[(#ICON|sinon{file-text})]"></i>]
                     [(#RANG|=={''}|oui)<span class="day">[(#DATE|affdate{'d'})]</span>[(#DATE|annee|=={#ENV{date}|annee}|oui)<span class="month">[(#DATE|nom_mois|couper{4})]</span>][(#DATE|annee|=={#ENV{date}|annee}|non)<span class="month-year">[(#DATE|affdate{'m/y'})]</span>]]
