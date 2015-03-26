@@ -36,6 +36,7 @@
 
         $flux = str_replace('\[','[',$flux);
         $flux = str_replace('\]',']',$flux);
+        $flux = str_replace('©','<span class="copyleft">©</span>',$flux);
         
         return $flux;
         
