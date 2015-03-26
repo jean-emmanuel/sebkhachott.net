@@ -78,7 +78,11 @@ body {
     .title {
         font-family:$header-font;
         font-size:100px;text-transform:uppercase;
-        color:$color-link;
+        color:$color-link;//color:transparent;
+        //background-image:url(#{$path}assets/title.svg);
+        background-size:auto 78px;
+        background-position:center;
+        background-repeat:no-repeat;
         span {
             position:relative;
             top:-.06em;
@@ -518,17 +522,17 @@ body {
             left:86px;
             text-transform:uppercase;
             em, h1 {
-                color:$color;
                 text-shadow:0 0 10px $black; 
             }
             em {
                 line-height:1.5em;
-                color:$color-1;
+                color:$color;
                 font-size:.9em;
             }
             h1 {
                 font-size:1.6em;
                 margin-top:.55em;
+                color:$color-link;
 
             }
             .desc {
