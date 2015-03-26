@@ -40,9 +40,8 @@
     
    
 
-    <div class="container article typo">
-        <div class="content">
-        
+    <div class="container typo">
+        <div class="content article">
         [(#ENV{edit}|mult{#GET{canEdit}}|=={0}|oui)
 
             [(#GET{safeSource}|?{#SET{texte,#TEXTE},#SET{texte,#TEXTE|safehtml}})][(#SET{notes,#NOTES})]

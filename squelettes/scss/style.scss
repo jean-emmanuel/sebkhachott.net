@@ -8,6 +8,7 @@ body, html {
 }
 body {
     overflow-y:scroll;
+    overflow-x:hidden;
     image-rendering:optimizeQuality;
 }
 .loading-screen {
@@ -78,14 +79,15 @@ body {
     .title {
         font-family:$header-font;
         font-size:100px;text-transform:uppercase;
-        color:$color-link;//color:transparent;
-        //background-image:url(#{$path}assets/title.svg);
-        background-size:auto 78px;
-        background-position:center;
+        color:$color-link;color:transparent;
+        background-image:url(#{$path}assets/title.svg);
+        background-size:auto 76%;
+        image-rendering:optimizeQuality;
+        background-position:center 8px;
         background-repeat:no-repeat;
         span {
             position:relative;
-            top:-.06em;
+            top:-.085em;
 
             text-shadow:none;
         }
@@ -156,11 +158,11 @@ body {
     padding:69px 40px 60px 45px;
     background:mix($bg-color-2,black,.7);
     border-left:40px solid mix($bg-color-1,black,.7);
-    
+    /*
     width:100%;
     left:0;
     margin-left:0;
-    
+    */
     @media all and (max-width:$width) {
         margin-left:0;left:auto;
         padding-right:20px;
@@ -241,11 +243,11 @@ body {
         padding-left:87px;
         z-index:5;
         text-shadow:0px 1px 1px $bg-color-2;
-        
+        /*
         width:100%;
         left:0;
         margin-left:0;
-        
+        */
         .navopen {
             display:none;
             font-size:2em;
@@ -532,7 +534,7 @@ body {
             h1 {
                 font-size:1.6em;
                 margin-top:.55em;
-                color:$color-link;
+                color:LIGHTEN($color,.1);
 
             }
             .desc {
@@ -761,7 +763,8 @@ body {
         .content {
             position:relative;
             z-index:1;
-            //max-width:800px;
+            max-width:1020px;
+            padding-right:30px;
             &.side {
                 float:left;
                 width:64%;
@@ -769,7 +772,19 @@ body {
                     width:auto;
                     float:none;
                 }
-            }            
+            }     
+            //column-width:500px;  
+            /*     
+            &.article:after {
+                content:"";
+                position:absolute;
+                left:100%;
+                top:-30px;
+                bottom:-2em;
+                width:2000px;
+                background:rgba(black,.1);
+            }
+            */
         }
 
         .mask, .mask-shadow {
@@ -829,10 +844,7 @@ body {
     
     
     }
-    
-    .article {
-        //color:$color-1;
-    }
+
     
     .footnotes {
         padding-bottom:$text-bottom-margin/2;
@@ -1080,7 +1092,7 @@ body {
         //z-index:1;
         margin-top:$text-bottom-margin;
         padding:$text-bottom-margin 0 1px 3px ;
-        //max-width:800px;
+        max-width:1020px;
         
         .comment {
             .comment-form {
@@ -1679,7 +1691,7 @@ $audio-player-bg:mix($bg-color-1,black,.75);
     overflow:hidden;
     
     div {
-        background:rgba($color-link,.5);
+        background:rgba($color-link,.7);
         position:absolute;
         left:0;
         top:0;

@@ -37,7 +37,6 @@
         $flux = str_replace('\[','[',$flux);
         $flux = str_replace('\]',']',$flux);
         
-        
         return $flux;
         
     }

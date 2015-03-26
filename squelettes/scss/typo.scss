@@ -51,6 +51,8 @@ i span {
     
     p, ul, ol, form, blockquote, pre, code, .spip_code {
         margin-bottom:$text-bottom-margin;
+        //break-inside:avoid;
+        //page-break-inside:avoid;
     }
 
 
