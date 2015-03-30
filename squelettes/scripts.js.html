@@ -1,25 +1,5 @@
 #HTTP_HEADER{Content-Type: text/javascript}
 
-#INCLURE{js/webfontloader.js}
-
-WebFont.load({
-  custom: {
-    families: ['FontAwesome','Ubuntu','League Gothic'],
-    urls: ['#CHEMIN{css/font-awesome.min.css}','#CHEMIN{css/league-gothic.css}','#CHEMIN{css/ubuntu.css}'],
-    testStrings: {
-      'FontAwesome': '',
-      'League Gothic':'SEBKHA-CHOTT1234'
-    }
-  },
-  fontactive: function(familyName, fvd) {
-    $('html').addClass(familyName.toLowerCase().replace(' ','') + '-loaded');
-  },
-  fontinactive: function(familyName, fvd) {
-    $('html').addClass(familyName.toLowerCase().replace(' ','') + '-failed');
-  },
-  classes:false
-});
-
 #INCLURE{js/jquery.min.js}
 #INCLURE{js/prefixfree.min.js}
 #INCLURE{js/jquery.nouislider.all.min.js}

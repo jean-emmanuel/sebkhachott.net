@@ -12,32 +12,12 @@ $path:"[(#CHEMIN{''}|url_absolue)]";
 
 ]
 
-.greeter .title, .greeter nav, .greeter .message, i, .subnav {
-    opacity:0;
-}
-
-.leaguegothic-loaded, .leaguegothic-failed {
-    .greeter .title, .greeter nav, .subnav, .greeter .message  {
-        opacity:1;
-    } 
-}
-.fontawesome-loaded, .fontawesome-failed {
-    i  {
-        opacity:1;
-    } 
-}
-
-
 
 [(#ENV{noscript}|oui)
 
 .image a, .image img {
     opacity:1!important;
 }
-.greeter .title, .greeter nav, i, .subnav {
-    opacity:1!important;
-}
-
 ]
 
 
