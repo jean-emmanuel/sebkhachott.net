@@ -3,7 +3,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
     // A
-    'aucun_resultat' => 'Rien...', 
+    'aucun_resultat' => 'Rien à voir ici...', 
     'article_vide' => 'Ce sujet est vide...',
     'article_brouillon' => 'Ce sujet n\'a pas encore été validé.',
     'article_refusé' => 'Ce sujet a été refusé.',
@@ -41,7 +41,6 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'forum_previsu' => 'Prévisualiser',
     'forum_confirm' => 'Confirmer',
     'forum_inscription' => 'S\'inscrire',
-    'forum_proposer' => 'Proposer',
     'forum_nouveau_sujet' => 'Nouveau sujet',
     
     'forum_attention_dix_caracteres' => 'Ton propos est inepte et/ou trop court. Révise ton flow.',
@@ -68,7 +67,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'forum_inscription_mail_sujet' => 'Identifiants',
     'forum_inscription_mail_corps' => "Hey, yo !\n\nVoilà tes identifiants pour le forum, mais d'abord tu dois confirmer ton adresse en cliquant là dessus :",  
     'forum_nouveau_mail_confirmation_corps' => "Hey, yo !\n\nTu peux valider ta nouvelle adresse mail en cliquant ici :\n\n@url@\n\n@signature@",
-    'forum_nouveau_mail_notification_corps' => "Hey, yo !\n\nUn mail vient d'être envoyé à @email@ pour confirmer ton changement d'adresse !\n\n@signature@",
+    'forum_nouveau_mail_notification_corps' => "Hey, yo !\n\nUn mail vient d'être envoyé à @email@ pour confirmer ton changement d'adresse.\n\n@signature@",
     'forum_nouveau_mail_confirmation_sujet' => "Confirmation d'adresse mail",
     
     'forum_mail_signature' => '-- Tupac Promo (responsable communication Ohreland Revival et Kour Sebkha-Chott)',
@@ -102,16 +101,15 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     
     'forum_messages_dans' => 'message(s)',
     'forum_sujets_dans' => 'sujets(s)',
-    
-    // I
-    'inscription' => 'Inscription', 
+
+    'forum_nouveau_sujet_titre' => 'Sans titre',
     
     
     // N
     
     'nav_deconnexion' => 'Se déconnecter',
     'nav_editer' => 'Éditer',
-    'nav_terminal' => 'Espace perso',
+    'nav_terminal' => 'Terminal',
     'nav_ecrire' => 'Proposer un sujet',
     'nav_rss' => 'Flux RSS',
     'nav_fermer' => 'Fermer',
@@ -119,22 +117,19 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'nav_forum' => 'Commentaires',
     'nav_rechercher' => 'Rechercher',
      
-    // P
-    'precommander' => 'Precommander maintenant !',
+
     // R
 
     'regarder_sur' => 'Regarder sur',
     
     // S 
-    'sans_titre' => 'Sans titre',
-    'se_deconnecter' => 'Se déconnecter',
     
     // T
     'twitter' => 'https://twitter.com/TupacPromoSC',
     'telecharger' =>'Télécharger',
-    'titre_nouvel_article' => 'Nouvel article',
     
-    //
+    'terminal_inscription' => 'Log in', 
+    'terminal_inscription' => 'Sign in', 
     
 )
 ?>
