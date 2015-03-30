@@ -27,7 +27,7 @@
             <BOUCLE_auteurdesc(AUTEURS){si #DESCRIPTIF|non}{id_article}{', '}>#SET{author,#NOM}
                  [(#GET{author,???}|textebrut|ucfirst|smallcaps)]
             </BOUCLE_auteurdesc>         
-                [(#DESCRIPTIF|textebrut)]
+                [(#DESCRIPTIF|textebrut|ucfirst|smallcaps)]
             <//B_auteurdesc>  
             </em>
         </div>
@@ -35,10 +35,6 @@
         <div class="mask-shadow"></div>
     </div>
     
-    
-
-    
-   
 
     <div class="container typo">
         <div class="content article">

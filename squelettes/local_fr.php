@@ -128,6 +128,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'twitter' => 'https://twitter.com/TupacPromoSC',
     'telecharger' =>'Télécharger',
     
+    'terminal_titre' => 'Terminal Ohrelandais',
+    'terminal_soustitre' => '3615 Code Yüla',
     'terminal_inscription' => 'Log in', 
     'terminal_inscription' => 'Sign in', 
     
