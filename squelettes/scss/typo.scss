@@ -68,10 +68,13 @@ i span {
 		    text-decoration: none;
 	    }
     }
-    
+    h3 {
+        color:$color-bold;
+    }
     p + p {
         //text-indent:20px;
     }
+
     
     em {
         font-style:italic;
@@ -79,6 +82,7 @@ i span {
     }
     b, strong {
         font-weight:bold;
+        color:$color-bold;
     }
     small, .small {
         font-size:.8em;
@@ -282,7 +286,7 @@ i span {
 	    }
 	    &.info {
             opacity:.65;
-	        max-height:2.5em;
+	        max-height:2.4em;
 	        transition:max-height .15s;
 	        
 	        overflow:hidden;
@@ -522,7 +526,7 @@ i span {
 	blockquote {
 		border-left: solid 4px $bg-color-1;
 		font-style: italic;
-		padding:$text-bottom-margin/2 0 $text-bottom-margin/2 2em;
+		padding:$text-bottom-margin/2 0 $text-bottom-margin/2 1em;
 		:last-child {
 		    margin-bottom:0;
 		}
@@ -530,7 +534,7 @@ i span {
 	blockquote + .reference {
 	    position:relative;
 	    top:-$text-bottom-margin/2;
-	    em {width:66.66%;display:inline-block}
+	    em {width:80%;display:inline-block}
 	}
 
 	code {

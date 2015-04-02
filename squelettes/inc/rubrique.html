@@ -56,6 +56,7 @@
                     [(#RANG|!={''}|oui)<i class="fa fa-[(#ICON|sinon{file-text})]"></i>]
                     [(#RANG|=={''}|oui)<span class="day">[(#DATE|affdate{'d'})]</span>[(#DATE|annee|=={#ENV{date}|annee}|oui)<span class="month">[(#DATE|nom_mois|couper{4})]</span>][(#DATE|annee|=={#ENV{date}|annee}|non)<span class="month-year">[(#DATE|affdate{'m/y'})]</span>]]
                 </p>
+                [<span class="logo" data-background="(#LOGO_ARTICLE|image_reduire{100}|extraire_attribut{src})"><span></span></span>]
                 <div class="description">
                 <B_auteur><:forum_par:>
                 <BOUCLE_auteur(AUTEURS){si #DESCRIPTIF|non}{id_article}{', '}>#SET{author,#NOM}

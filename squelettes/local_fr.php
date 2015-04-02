@@ -122,6 +122,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'nav_forum' => 'Commentaires',
     'nav_rechercher' => 'Rechercher',
      
+     
 
     // R
 
@@ -137,6 +138,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'terminal_soustitre' => '3615 Code Yüla',
     'terminal_inscription' => 'Log in', 
     'terminal_inscription' => 'Sign in', 
+    
+    
     
 )
 ?>

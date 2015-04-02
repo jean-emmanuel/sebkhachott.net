@@ -20,7 +20,7 @@
         [<div class="background" (#LOGO_ARTICLE|oui)data-background="[(#GET{bg}|extraire_attribut{src}|url_absolue)]"></div>]
         
         <div class="title">
-            <em>[(#DATE|>{#ENV{date}}|?{#DATE|affdate_heure|textebrut|replace{'h(\[0-9\]+)min','h$1'},#DATE|affdate|textebrut})]</em>
+            <em>[(#DATE|>{#ENV{date}}|?{#DATE|affdate_heure|textebrut|replace{'h(\[0-9\]+)min','h$1'},#DATE|affdate|textebrut})][(#SESSION{statut}|match{0minirezo|1comite}|oui)<sup><a href="#URL_ECRIRE{article,id_article=#ID_ARTICLE}">\[#ID_ARTICLE\]</a></sup>]</em>
             <h1>[(#TITRE|textebrut|ucfirst|smallcaps)]</h1>
             <em class="desc">
            <B_auteurdesc><:forum_par:>

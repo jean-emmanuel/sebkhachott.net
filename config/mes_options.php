@@ -54,15 +54,18 @@
     }  
     
     // Definir la langue selon le navigateur sauf si le parametre de langue est précisé dans l'url 
-    if (!$_GET['lang']) {
-        $lang = explode(',',explode(';',$_SERVER['HTTP_ACCEPT_LANGUAGE'])[0])[0];
-        $lang = preg_replace('/\-[a-z]+/','',$lang);
-        if (strtolower($lang) == 'fr') {
+    if (!strpos($_SERVER['REQUEST_URI'],'lang=')) {
+
+        $lang = explode(',',$_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
+
+        if (strpos(strtolower($lang),'fr')!==false) {
             set_request('lang', 'fr');
+
         } else {
             set_request('lang', 'en');
         }
     }
+
      
     $flag_preserver = true;
     define('_NOTES_OUVRE_REF',' <sup>');

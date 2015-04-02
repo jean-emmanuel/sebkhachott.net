@@ -45,8 +45,10 @@
 
 [(#ENV*{erreurs}|table_valeur{previsu}|oui)
 
-[<span>(#ENV*{erreurs}|table_valeur{previsu}|match{'<span>.*</span>'})</span> <em>([(#ENV{date}|date_interface)])</em>]           
-
+<p class="title">
+[<span class="author">(#ENV*{erreurs}|table_valeur{previsu}|match{'<span>.*</span>'})</span> 
+<em class="date">[(#ENV{date}|date_interface|ucfirst)]</em>]           
+</p>
 [<div class="message">
     (#ENV*{erreurs}|table_valeur{previsu}|match{"<div style='word-wrap:break-word;'>.*</div>"}|safehtml)
 </div>]

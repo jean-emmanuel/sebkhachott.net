@@ -7,9 +7,15 @@
         <a class="button confirm" title="Supprimer" href="#URL_ACTION_AUTEUR{instituer_forum,#ID_FORUM-off,#SELF|ancre_url{forum#ID_FORUM}}"><i class="fa fa-trash"></i></a>
     ]</div>
     <BOUCLE_auteur(AUTEURS){id_auteur}>
-    <span class="author gang">[(#NOM|textebrut|ucfirst)]</span> <em>([(#DATE|date_interface|replace{'h(\[0-9\]+)min','h$1'})])</em>
+    <p class="title">
+        <span class="author gang">[(#NOM|textebrut|ucfirst)]</span>
+        <em class="date">[(#DATE|date_interface|replace{'h(\[0-9\]+)min','h$1'}|ucfirst)]</em>
+    </p>
     </BOUCLE_auteur>
-    <span class="author dude">[(#NOM|textebrut|ucfirst|sinon{<:anonyme:>})]</span> <em>([(#DATE|date_interface|replace{'h(\[0-9\]+)min','h$1'})])</em>
+    <p class="title">
+        <span class="author dude">[(#NOM|textebrut|ucfirst|sinon{<:anonyme:>})]</span>
+        <em class="date">[(#DATE|date_interface|replace{'h(\[0-9\]+)min','h$1'}|ucfirst)]</em>
+    </p>
     <//B_auteur>
     
     [(#GET{profondeur}|=={1}|oui)

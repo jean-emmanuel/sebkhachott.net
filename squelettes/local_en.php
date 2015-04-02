@@ -136,5 +136,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'terminal_inscription' => 'Log in', 
     'terminal_inscription' => 'Sign in', 
     
+    
+    'pas_de_traduction' => 'This has not been translated in your language (yet?). Maybe by wrinklin your forehead very hard you\'ll manage to understand it...'
+    
 )
 ?>
