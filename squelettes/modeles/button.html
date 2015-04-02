@@ -1,1 +1,1 @@
-<a href="#ENV{args/url}" class="button[  icon fa-(#ENV{args/icon,#ENV{args/icone}})]" >#ENV{args/texte,#ENV{args/text}}</a>
+<a href="#ENV{args/url}" [(#POPUP|=={oui}|oui)data-poptrox="iframe,800x600" ]class="[(#FULL|=={oui}|oui)full big ][(#POPUP|=={oui}|oui)popup-frame ]button[  icon fa-(#ENV{args/icon,#ENV{args/icone}})]">#ENV{args/texte,#ENV{args/text}}</a>

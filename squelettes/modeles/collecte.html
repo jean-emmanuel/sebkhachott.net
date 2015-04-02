@@ -1,15 +1,3 @@
-#SET{data,#INCLURE{fond=inc/helloasso,collecte=#COLLECTE}}
-#SET{state,#GET{data}|json_decode|table_valeur{montant}|div{#GET{data}|json_decode|table_valeur{objectif}}|mult{100}}
-
-<div class="fundprogress">
-    <span class="state">#GET{state}%</span>
-    <div class="bar" style="width:#GET{state}%"></div>
-</div>#CACHE{0}
-
-<p>
-    <a class="button full big popup-frame" data-poptrox="iframe,800x600" target="_blank" href="http://www.helloasso.com/associations/ammd/collectes/#COLLECTE/formulaire-don">
-        <:collecte_souscrire:>
-    </a>
-</p>
+[(#ENV{collecte}|gethelloassodata|table_valeur{montant})] €
 
 

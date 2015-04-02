@@ -24,6 +24,7 @@
         $flux = preg_replace('/-:-(.*)-:-/','<p class="align-center">$1</p>',$flux);
         $flux = preg_replace('/--:(.*)--:/','<p class="align-right">$1</p>',$flux);
         $flux = preg_replace('/<ref>(.*)<\/ref>/','<p class="align-right reference"><em>-- $1</em></p>',$flux);
+        //$flux = preg_replace('/====<[^[=>]]*>(.*)<\\[^[=>]]*>)====/','<p class="strike-through"><span>$1</span></p>',$flux);
         $flux = preg_replace('/====(.*)====/','<p class="strike-through">$1</p>',$flux);
         $flux = preg_replace('/==(.*)====/','<p class="strike-through align-left">$1</p>',$flux);
         $flux = preg_replace('/====(.*)==/','<p class="strike-through align-right">$1</p>',$flux);

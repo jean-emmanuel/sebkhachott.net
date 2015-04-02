@@ -23,7 +23,7 @@
         $url = 'http://www.helloasso.com/associations/ammd/collectes/' . $collecte;
         $html = file_get_html($url);
         $data['montant'] = preg_replace('/[^0-9]+/','',$html->find('div#collecteMoney', 0)->plaintext);
-        $data['objectif'] = preg_replace('/[^0-9]+/','',$html->find('div#objectifMoney', 0)->find('div.amount', 0)->plaintext);
+        //$data['objectif'] = preg_replace('/[^0-9]+/','',$html->find('div#objectifMoney', 0)->find('div.amount', 0)->plaintext);
         return $data;
     }
     

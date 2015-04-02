@@ -70,5 +70,6 @@
    [(#STATUT|=={'publie'}|oui)#INCLURE{fond=inc/forum,id_article}]
    
    <BOUCLE_readby(AUTEURS){id_auteur=#SESSION{id_auteur}}{si #STATUT|=={'publie'}|oui}{tout}>#MARQUER_ARTICLE_LU</BOUCLE_readby>
+
 </div>
 </BOUCLE_article></BOUCLE_rubriqueContexte></BOUCLE_articleContexte>#INCLURE{fond=inc/404,env}<//B_articleContexte>#FILTRE{cleanLines}

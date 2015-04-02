@@ -89,12 +89,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'forum_date_inscription' => 'Inscription date',
     'forum_sujets_publies' => 'Published threads',
     'forum_messages_postes' => 'Posts',
-    'forum_sujets_proposes' => 'Submitted threads',
+    'forum_sujets_proposes' => 'Pending threads',
     'forum_sujets_non_lus' => 'Unread threads',
     'forum_messages_non_lus' => 'Unread posts',
     'forum_aucun_sujet_non_lu' => 'No unread thread.',
     'forum_aucun_message_non_lu' => 'No unread message.',
-    
+    'forum_aucun_sujet_propose' => 'No pending thread.',
     'forum_nouveau_message' => 'new post',
     'forum_nouveaux_messages' => 'new posts',
     
