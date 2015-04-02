@@ -105,6 +105,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
     'forum_nouveau_sujet_titre' => 'Sans titre',
     
+    'forum_statut_attente' => 'PROPOSÉ',
+    'forum_statut_refuse' => 'REFUSÉ',
+    'forum_statut_publie' => 'VALIDÉ',
+    
     
     // N
     

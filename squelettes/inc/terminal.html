@@ -77,7 +77,8 @@
             
             <ul class="tight">
             <BOUCLE_articlesproposes(ARTICLES){!par date}{id_auteur=#ID_AUTEUR}{statut IN publie,prop,prepa,refuse,poubelle}{id_article !IN #ARTICLES_LUS|explode{','}}>
-                <li><a href="#URL_ARTICLE">[(#STATUT|match{prop|prepa}|non)\[[(#STATUT|majuscules)]\] ]#TITRE <em>[(#DATE|affdate_heure|replace{'h(\[0-9\]+)min','h$1'})]</em></a></li>
+                
+                <li><a href="#URL_ARTICLE">[[(#STATUT|match{prop|prepa})<:forum_satut_attente:>][(#STATUT|match{refuse|poubelle})<:forum_satut_refuse:>][(#STATUT|match{publie})<:forum_satut_publie:>]] #TITRE <em>[(#DATE|affdate_heure|replace{'h(\[0-9\]+)min','h$1'})]</em></a></li>
             </BOUCLE_articlesproposes>
             </ul>
             </B_articlesproposes>
