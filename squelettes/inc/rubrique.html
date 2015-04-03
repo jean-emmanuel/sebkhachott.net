@@ -25,13 +25,13 @@
             <BOUCLE_hidden(ARTICLES)>[(#HIDDEN|oui)
             #SET{hidden,#GET{hidden,#ARRAY}|push{#ID_ARTICLE}}
             ]</BOUCLE_hidden>
-            <BOUCLE_sticky(ARTICLES){si #ENV{recherche}|non}{id_rubrique}{par num titre}>[(#RANG|!={''}|oui)
+            <BOUCLE_sticky(ARTICLES){si #ENV{recherche}|non}{enfants #ID_RUBRIQUE}{par num titre}>[(#RANG|!={''}|oui)
             #SET{articles,#GET{articles,#ARRAY}|push{#ID_ARTICLE}}
             ]</BOUCLE_sticky>
-            <BOUCLE_futur(ARTICLES){si #ENV{recherche}|non}{id_rubrique}{par date}{age<0}>[(#RANG|=={''}|oui)
+            <BOUCLE_futur(ARTICLES){si #ENV{recherche}|non}{enfants #ID_RUBRIQUE}{par date}{age<0}>[(#RANG|=={''}|oui)
             #SET{articles,#GET{articles,#ARRAY}|push{#ID_ARTICLE}}
             ]</BOUCLE_futur>
-            <BOUCLE_normal(ARTICLES){si #ENV{recherche}|non}{id_rubrique}{!par date}{age>=0}>[(#RANG|=={''}|oui)
+            <BOUCLE_normal(ARTICLES){si #ENV{recherche}|non}{enfants #ID_RUBRIQUE}{!par date}{age>=0}>[(#RANG|=={''}|oui)
             #SET{articles,#GET{articles,#ARRAY}|push{#ID_ARTICLE}}
             ]</BOUCLE_normal>
             
