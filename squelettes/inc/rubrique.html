@@ -50,7 +50,7 @@
             <BOUCLE_articlesList(ARTICLES){id_article IN #GET{articles}}{pagination 10}>
             <a class="item" href="#URL_ARTICLE">
                 
-                <h2>[(#TITRE|textebrut|ucfirst|smallcaps)]<BOUCLE_forumsCount(FORUMS){id_article}> </BOUCLE_forumsCount><sup class="forums-count">#TOTAL_BOUCLE <i class="fa fa-comments-o"><span><:forum_messages_dans:></span></i></sup></B_forumsCount></h2>
+                <h2>[(#TITRE|textebrut|ucfirst|smallcaps)]<BOUCLE_forumsCount(FORUMS){id_article}{plat}> </BOUCLE_forumsCount><sup class="forums-count">#TOTAL_BOUCLE <i class="fa fa-comments-o"><span><:forum_messages_dans:></span></i></sup></B_forumsCount></h2>
                 <p class="info[(#DATE|>{#ENV{date}}|oui)futur]" title="[(#DATE|affdate)]">
                     <span class="border"></span><span class="shadow-fix"></span>
                     [(#RANG|!={''}|oui)<i class="fa fa-[(#ICON|sinon{file-text})]"></i>]
