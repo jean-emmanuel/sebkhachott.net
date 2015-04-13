@@ -5,7 +5,15 @@
 
 #INCLURE{fond=inc/article,env,page=article}
 [(#ID_RUBRIQUE|=={5}|oui)#CACHE{0}]
-[(#ID_ARTICLE|=={42}|oui)#CACHE{0}]
+[(#ID_ARTICLE|=={42}|oui)
+<script>
+$(document).ready(function(){
+$('#collecte_helloass').each(function(){
+    $(this).load('#URL_PAGE{collecte_load}&collecte='+$(this).attr('data-collecte'));
+})
+});
+</script>
+#CACHE{0}]
 
 #EVAL{'chr(10)'}#EVAL{'chr(10)'}
 
