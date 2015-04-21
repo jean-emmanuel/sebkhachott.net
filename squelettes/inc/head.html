@@ -23,7 +23,7 @@
     #SET{description,#DESCRIPTIF|sinon{#TEXTE|couper{200}}|textebrut}
     [(#LOGO_RUBRIQUE|oui)#SET{image,#LOGO_RUBRIQUE|image_reduire{300}|extraire_attribut{src}|url_absolue}]
     #SET{page_url,#URL_RUBRIQUE|url_absolue}
-    
+    #SET{video,#TEXTE|extraire_attribut{data-fallback}}
 </BOUCLE_meta_r>
 
 <BOUCLE_meta_a(ARTICLES){id_article=#ID_ARTICLE}>
@@ -32,7 +32,7 @@
     #SET{description,#DESCRIPTIF|sinon{#TEXTE|couper{200}}|textebrut}
     [(#LOGO_ARTICLE|oui)#SET{image,#LOGO_ARTICLE|image_reduire{300}|extraire_attribut{src}|url_absolue}]
     #SET{page_url,#URL_ARTICLE|url_absolue}
-
+    #SET{video,#TEXTE|extraire_attribut{data-fallback}}
     <BOUCLE_author_a(AUTEURS){id_article}>
     #SET{author,#NOM|textebrut}
     </BOUCLE_author_a>
@@ -62,6 +62,7 @@
     [<meta property="og:description" content="(#GET{description})" />]
     <meta property="og:url" content="#GET{page_url}" />
     <meta property="og:image" content="#GET{image}" />
+    [<meta property="og:video" content="(#GET{video})" />]
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary">

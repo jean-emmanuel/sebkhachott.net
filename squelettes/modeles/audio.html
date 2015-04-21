@@ -2,7 +2,7 @@
 <BOUCLE_urldoc(DOCUMENTS){si #ENV{args/download}|match{http}|non}{id_document=#ENV{args/download}}>#SET{download,#URL_DOC_COMPTEUR}</BOUCLE_urldoc>
 
 <B_playlist>
-<div class="audio-player">
+<div class="audio-player"[ data-fallback="(#ALT)"]>
         <div class="controls">
             <div class="buttons">
                 <!--<a href="#" class="stop"><i class="fa fa-fw fa-stop"></i></a>-->

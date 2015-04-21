@@ -3,7 +3,7 @@
 
     <div class="background" [(#LOGO_DOCUMENT|extraire_attribut{src}|match{'IMG/'}|oui)data-background="[(#LOGO_DOCUMENT|image_reduire{670,0}|extraire_attribut{src})]"]></div>
     
-    <a href="#URL_DOCUMENT" target="_blank" class="play" data-fallback="#FALLBACK_VIDEO" data-format>
+    <a href="#URL_DOCUMENT" target="_blank" class="play" data-fallback="#FALLBACK_VIDEO">
         <span class="icon"><i class="fa fa-play"></i></span>
         <span class="border"></span>
         [<span class="caption" title="[(#TITRE|ucfirst)]">(#TITRE|ucfirst)</span>]

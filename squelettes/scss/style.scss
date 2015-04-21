@@ -390,9 +390,11 @@ body {
                 line-height:20px;
                 display:block;
                 position:relative;
+                outline:0;
                 //overflow:hidden;
                 color:$color-1;
-                &:hover {
+                
+                &:hover,&:focus {
                     color:$color;
                 }
                 i {
@@ -792,6 +794,11 @@ body {
                 background:rgba(black,.1);
             }
             */
+            &:after {
+                content:"";
+                display:block;
+                clear:both;
+            }
         }
 
         .mask, .mask-shadow {
