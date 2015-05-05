@@ -47,7 +47,7 @@
 
             #SET{articles, #GET{articles}|array_diff{#GET{hidden,#ARRAY}}}
 
-            <BOUCLE_articlesList(ARTICLES){id_article IN #GET{articles}}{pagination 10}>
+            <BOUCLE_articlesList(ARTICLES){id_article IN #GET{articles}}{pagination 20}>
             <a class="item" href="#URL_ARTICLE">
                 
                 <h2>[(#TITRE|textebrut|ucfirst|smallcaps)]<BOUCLE_forumsCount(FORUMS){id_article}{plat}> </BOUCLE_forumsCount><sup class="forums-count">#TOTAL_BOUCLE <i class="fa fa-comments-o"><span><:forum_messages_dans:></span></i></sup></B_forumsCount></h2>

@@ -187,25 +187,12 @@ i span {
 		tbody {
 
 			tr {
-				border: solid 1px $bg-color-1;
-				//border-left: 0;
-				//border-right: 0;
-
-				&:nth-child(2n + 1) {
-					background-color: rgba($bg-color-1,.5);
+				border: 0;
 				}
-				&:last-child:first-child {
-				    background-color:transparent;
-				    border:0;
-				    td {
-				        padding:2px;
-			        }
-				}
-			}
-		}
+        }
 
 		td {
-			padding: .5em;
+			padding: 2px;
 			:last-child {
 			    margin-bottom:0;
 			}
