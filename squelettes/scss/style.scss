@@ -473,7 +473,7 @@ body {
     }
     
     .header {
-        height:260px;
+        height:300px;
         position:relative;
         margin-left:-85px;
         margin-right:-40px;
@@ -527,19 +527,22 @@ body {
             position:absolute;
             bottom:$text-bottom-margin;
             margin-bottom:30px;
-            left:86px;
+            left:85px;
             text-transform:uppercase;
             em, h1 {
                 color:$color-bold;
+                color:#fff;
+                opacity:.8;
                 text-shadow:0 0 10px $black; 
             }
             em {
                 line-height:1.5em;
                 //color:$color;
-                font-size:.9em;
+                font-size:1em;
             }
             h1 {
-                font-size:1.6em;
+                font-size:1.4em;
+                font-weight:bold;
                 margin-top:.55em;
                 
 
