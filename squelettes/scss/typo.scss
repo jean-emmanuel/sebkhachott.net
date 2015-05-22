@@ -162,7 +162,7 @@ i span {
 		        position:absolute;
 		        left:0;
 		    }
-			padding-left: 1.5em;
+			padding-left: 1em;
 			//margin-bottom:$text-bottom-margin/2;
 			ul {
 			    margin-top:$text-bottom-margin/2;
@@ -460,6 +460,7 @@ i span {
         
         &.full {
             width:100%;
+            box-shadow:0 0 5px 0 #111;
         }
         
         &.big {

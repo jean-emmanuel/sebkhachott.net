@@ -10,7 +10,7 @@
 	<language>#LANG</language>
 	
 [(#ID_SECTEUR|!={#ID}|oui)#SET{id_rubrique,#ID}]
-<BOUCLE_articles(ARTICLES){id_secteur=#ID_SECTEUR}{id_rubrique?==#GET{id_rubrique}}{!par date}{0,10}>
+<BOUCLE_articles(ARTICLES){id_secteur=#ID_SECTEUR}{id_rubrique?==#GET{id_rubrique}}{!par date}{0,20}>[(#HIDDEN|non)
 	<item[ xml:lang="(#LANG)"]>
 		<title><BOUCLE_rub2(RUBRIQUES){si #ID_SECTEUR|!={#ID}|non}{id_rubrique?}>#TITRE - </BOUCLE_rub2>[(#TITRE|textebrut)]</title>
 		<link>[(#URL_ARTICLE|url_absolue)]</link>
@@ -26,7 +26,7 @@
 		</content:encoded>
 
 	</item>
-</BOUCLE_articles>
+]</BOUCLE_articles>
 
 
 </channel>
