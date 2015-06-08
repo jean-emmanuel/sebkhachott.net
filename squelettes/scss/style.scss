@@ -803,7 +803,26 @@ body {
                 clear:both;
             }
         }
-
+        
+        .article.has-sidebar {
+            width:66%;float:left;
+            @media all and (max-width:$width) {
+                width:auto;
+                float:none;
+            }
+        }
+        .sidebar {
+            width:33%;
+            float:right;
+            padding-left:.75em;
+            position:relative;
+            z-index:1;
+            @media all and (max-width:$width) {
+                width:auto;
+                float:none;
+                padding:0;
+            }
+        }
         .mask, .mask-shadow {
             position:absolute;
             bottom:-24px;
@@ -1814,8 +1833,39 @@ $audio-player-bg:mix($bg-color-1,black,.75);
 }
 
 
+.crowdfunding-bar {
+    background:rgba(white,.015);
+    border:1px solid rgba(white,0.03);
+    border-bottom:0;
+    font-size:.9em;
+    color:$color!important;
+    cursor:pointer;
+    margin-bottom:$text-bottom-margin;
+}
 
-
+.crowdfunding-option {
+    display:block;
+    padding:1em;
+    border-bottom:1px solid rgba(white,0.03);
+    :last-child {
+        margin-bottom:0;
+    }
+    transition:all .2s;
+    &:hover {
+        background:rgba(white,.01);
+    }
+    strong {
+        display:block;
+    }
+}
+.crowdfunding-total {
+     font-size:1.2em;
+     background:rgba(white,.01);
+     text-transform:uppercase;
+     padding:1em;
+     border-bottom:1px solid rgba(white,0.03);
+     color:$color-link;
+}
 
 
 /*

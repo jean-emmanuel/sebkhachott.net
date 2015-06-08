@@ -8,9 +8,7 @@
 [(#ID_ARTICLE|=={42}|oui)
 <script>
 $(document).ready(function(){
-$('#collecte_helloass').each(function(){
-    $(this).load('#URL_PAGE{collecte_load}&collecte='+$(this).attr('data-collecte'));
-})
+$('.collecte_helloass').load('#URL_PAGE{collecte_load}&collecte='+$('.collecte_helloass').first().attr('data-collecte'));
 });
 </script>
 #CACHE{0}]

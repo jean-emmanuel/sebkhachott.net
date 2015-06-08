@@ -37,7 +37,7 @@
     
 
     <div class="container typo">
-        <div class="content article">
+        <div class="content article[ (#SIDEBAR|oui)has-sidebar]">
         [(#ENV{edit}|mult{#GET{canEdit}}|=={0}|oui)
 
             [(#GET{safeSource}|?{#SET{texte,#TEXTE},#SET{texte,#TEXTE|safehtml}})][(#SET{notes,#NOTES})]
@@ -64,6 +64,10 @@
         ]   
             
         </div>
+        
+        [<div class="sidebar">
+        (#SIDEBAR)
+        </div><div class="clear"></div>]
         <div class="mask"></div><div class="mask-shadow"></div>
     </div>
     
