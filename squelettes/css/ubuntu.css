@@ -14,3 +14,15 @@
     font-style: normal;
 
 }
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('../polices/ubuntu-m-webfont.eot');
+    src: url('../polices/ubuntu-m-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../polices/ubuntu-m-webfont.woff2') format('woff2'),
+         url('../polices/ubuntu-m-webfont.woff') format('woff'),
+         url('../polices/ubuntu-m-webfont.ttf') format('truetype'),
+         url('../polices/ubuntu-m-webfont.svg#ubuntumedium') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}

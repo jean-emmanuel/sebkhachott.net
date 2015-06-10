@@ -109,7 +109,7 @@
             <BOUCLE_messagesnonlus(ARTICLES){!par date}>
    
                 #SET{list,#ARRAY}
-                <BOUCLE_forumsnonlus(FORUMS){!par date}{id_article}{date >= #DATE_INSCRIPTION}>
+                <BOUCLE_forumsnonlus(FORUMS){!par date}{id_article}{date >= #DATE_INSCRIPTION}{plat}>
                 #SET{list,#GET{list}|push{#ID_FORUM}}
                 </BOUCLE_forumsnonlus>
                 #SET{n,#GET{list}|array_diff{#FORUMS_LUS|explode{','}}|sizeof}
