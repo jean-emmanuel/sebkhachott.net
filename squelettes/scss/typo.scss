@@ -433,35 +433,28 @@ i span {
 	.button {
 		@include vendor-property('appearance', 'none');
 		background-color: mix($bg-color-1,black,.7);
-		//border: 1px dashed;
-		//border-bottom:2px solid rgba(0,0,0,.6);
+		border: 1px solid rgba(white,0.025);
 		color: $color-link !important;
 		cursor: pointer;
 		display: inline-block;
-		//font-weight: bold;
 		height: 2.2em;
 		line-height: 2em;
 		padding: 0 1em;
 		text-align: center;
 		text-decoration: none;
 		white-space: nowrap;
-        
+        transition:all .2s;
         overflow:hidden;
         
 
-        border-radius:3px;
-
         line-height:2.2em;
-        transition:none;
         &:active {
             border-bottom-width:1px;
             padding-top:1px;
-            //border-top:1px solid mix($bg-color-1,black,.7);
         }
         
         &.full {
             width:100%;
-            box-shadow:0 0 5px 0 #111;
         }
         
         &.big {
@@ -471,7 +464,7 @@ i span {
         }
 
 		&:hover {
-			background-color: $bg-color-2;
+			background-color: lighten( mix($bg-color-1,black,.7),.015 );
 		}
 
 		i {
