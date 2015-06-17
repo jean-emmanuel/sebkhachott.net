@@ -317,10 +317,10 @@ body {
                     color:$color-2;
                     outline:0;
                     &.on {
-                        color:$color!important;
+                        color:$color-bold!important;
                     }
                     &:hover, &:focus {
-                        color:$color-1;
+                        color:$color;
                     }
                 }
             }
@@ -948,13 +948,13 @@ body {
             background:mix($bg-color,black,.7);
             height:37px;
             //text-shadow:0 -1px 1px rgba($black,0.7);
-            color:$color-2;
+            color:$color-1;
             
             &:hover {
                 
             }
             &.futur {
-                color:$color;
+                color:$color-bold;
             }
             .articles-count {
                 position:absolute;
@@ -973,6 +973,7 @@ body {
                 @include long-shadow(text,mix($bg-color,black,.55),25);
                 position:relative;
                 z-index:1;
+                color:$color-bold;
             }
             
             .day {
