@@ -164,6 +164,7 @@ body {
     padding:69px 40px 60px 45px;
     background:mix($bg-color-2,black,.7);
     border-left:40px solid mix($bg-color-1,black,.7);
+    box-shadow:0 0 10px rgba(black,.55);
     /*
     width:100%;
     left:0;
@@ -305,14 +306,13 @@ body {
         .subnav {
             position:absolute;
             bottom:0px;padding-bottom:5px;padding-right:50px;overflow:hidden;
-            
             left:86px;
             font-family:$header-font;
             text-transform:uppercase;
-            font-size:28px;line-height:24px;
+            font-size:24px;line-height:20px;
             li {
                 display:inline-block;
-                margin-right:.75em;
+                margin-right:.5em;
                 a {
                     color:$color-2;
                     outline:0;
@@ -494,12 +494,18 @@ body {
             padding:15px 40px 30px 86px;
             .title {
                 position:relative;
-                left:auto;
-                margin:0;
-                bottom:auto;
-                padding:1.5em 0 1.5em;
-
+                margin-left:-85px;
+                bottom:-30px;
+                margin-right:-40px;
+                padding-top:80px;
+                @media all and (max-width:$width) {
+                    margin-right: -40px;
+                    padding-left: 85px;
+                    padding-bottom: 30px;
+                    padding-right:20px;
+                }
             }
+            
         }
         
         .background {
@@ -520,17 +526,27 @@ body {
         .title {
             @media all and (max-width:$width) {
                 position:relative;
-                left:auto;
-                margin:0;
-                bottom:auto;
-                padding:1em 0;
+                margin-left:-85px;
+                bottom:-30px;
+                margin-right:-40px;
+                margin-right: -40px;
+                padding-left: 85px;
+                padding-bottom: 30px;
+                padding-right:20px;
+                padding-top:80px;
 
             }
             position:absolute;
             bottom:$text-bottom-margin;
-            margin-bottom:30px;
             left:85px;
-            text-transform:uppercase;
+            position: absolute;
+            background: linear-gradient(0deg,rgba(0,0,0,1),rgba(0,0,0,0) );
+            padding: 0.5em;
+            right: 0px;
+            padding-left: 85px;
+            bottom: 0;
+            left: 0;
+            padding-bottom: 35px;
             em, h1 {
                 color:$color-bold;
                 color:#fff;
@@ -545,15 +561,12 @@ body {
             h1 {
                 font-size:1.4em;
                 font-weight:bold;
-                margin-top:.55em;
-                
-
+                text-transform:uppercase;
             }
             .desc {
                 padding-top:.2em;
                 display:block;
                 line-height:1.5em;
-                margin-top:1em;
                 margin-bottom:0;
             }
         }
