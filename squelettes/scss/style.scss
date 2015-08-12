@@ -368,7 +368,7 @@ body {
             left:78px;
             right:0;
             height:2px;
-            background:$bg-color;
+            background:$bg-color-2;
             z-index:2;
         }
         
@@ -510,7 +510,7 @@ body {
             opacity:0;
             transition: opacity .25s;
             &.loaded {
-                opacity:.6;
+                opacity:1;
                 @media all and (max-width:$width) {
                     opacity:.4
                 }
@@ -1079,7 +1079,7 @@ body {
             transition:opacity .15s;
             
             &.loaded {
-                opacity:.65;
+                opacity:1;
             }
             
             &:before, span:before {
@@ -1508,7 +1508,7 @@ $audio-player-bg:mix($bg-color-1,black,.75);
         opacity:0;
         transition: opacity .25s;
         &.loaded {
-            opacity:.6;
+            opacity:1;
         }
     }
     .fallback-link {
